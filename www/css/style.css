@@ -1,0 +1,60 @@
+/* Empty. Add your own CSS if you like */
+body{
+  font-size: 16px;
+}
+.noDercorationAnchor{
+  text-decoration: none;
+  color: #aaa;
+}
+
+.customHeaderSearch{
+  height: 30px;
+  border-bottom: 0px !important;
+}
+
+.customHeaderSearch.bar{
+  background-color: transparent !important;
+}
+
+.customHeaderSearch{
+  margin: 4px 20px 0 20px;
+}
+
+.centeredContent{
+  margin:0 auto;
+  width:70%;
+}
+.pull-right{
+  float:right;
+}
+.oneRowHeader{
+  margin: 40px 0;
+}
+.oneRowHeader h3{
+  display: inline;
+}
+
+.oneRowInfo{
+  margin: 10px 0;
+}
+
+.oneRowInfo p{
+  width:65%;
+  display: inline-block;
+}
+.oneRowInfo a{
+  margin: 0 2px;
+}
+@media screen and (max-width: 800px) {
+  .oneRowInfo p{
+    width:69%;
+    display: inline-block;
+  }
+}
+
+@media screen and (min-width:800px){
+  .oneRowInfo p{
+    width:80%;
+    display: inline-block;
+  }
+}
