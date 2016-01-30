@@ -1,6 +1,8 @@
-app.controller('homeController',function ($scope, $rootScope, $state){
-  $scope.goToActivities = function(){
-    console.log("GOTO")
-    $state.go('activitiesWeb');
+app.controller('homeController',function ($rootScope, $scope, $state){
+  if(!$rootScope.data.logged){
+    $state.go('login');
   }
+
+  $scope.showMenu = true;
+
 });

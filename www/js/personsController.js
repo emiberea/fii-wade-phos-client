@@ -1,5 +1,8 @@
-app.controller("personsController", function ($scope, $rootScope, $ionicModal) {
-  console.log("persons contoller");
+app.controller("personsController", function ($rootScope, $scope, $state, $ionicModal) {
+
+  if(!$rootScope.data.logged){
+    $state.go('login');
+  }
 
   $ionicModal.fromTemplateUrl('../views/web/newPersonModal.html', function($ionicModal) {
        $scope.newPersonModal = $ionicModal;

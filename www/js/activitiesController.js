@@ -1,6 +1,9 @@
-app.controller("activitiesController", function ($scope, $rootScope, $ionicModal) {
+app.controller("activitiesController", function ($rootScope, $scope, $state, $ionicModal) {
   console.log("activities contoller");
 
+  if(!$rootScope.data.logged){
+    $state.go('login');
+  }
   $ionicModal.fromTemplateUrl('../views/web/newActivityModal.html', function($ionicModal) {
        $scope.newActivityModal = $ionicModal;
    }, {

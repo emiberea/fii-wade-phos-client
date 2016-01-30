@@ -6,7 +6,7 @@
 
 
 var app = angular.module('starter', ['ionic','ui.router'])
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $state, $rootScope) {
   $ionicPlatform.ready(function() {
     if(window.cordova && window.cordova.plugins.Keyboard) {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -22,32 +22,68 @@ var app = angular.module('starter', ['ionic','ui.router'])
       StatusBar.styleDefault();
     }
   });
-  // var platform = ionic.Platform.platform();
-  //     $scope.path = 'web';
-  //
-  // if(platform.indexOf('iOS')>-1 || platform.indexOf('Android')>-1){
-  //   $scope.path='phone';
-  // }
+  // console.log(ionic.Platform.isWebView());
+  // console.log(ionic.Platform.platform());
+  $state.go('login');
+  $rootScope.data = {
+        logged: false,
+        logout: function(){
+          $rootScope.data.logged = false;
+          localStorage.setItem('logged', false);
+          $state.go('login');
+        }
+    }
 
-  //  console.log($rootScope.path);
+   console.log(localStorage.getItem('logged'));
+    if(localStorage.getItem('logged')=='true'){
+
+      $rootScope.data.logged = true;
+    }
 });
 
 app.config(function($stateProvider, $urlRouterProvider) {
-
-  $stateProvider.state('menu', {
-    url: '/',
-    controller: 'homeController'
+  // var platform = ionic.Platform.platform();
+  //     localStorage.setItem('path', 'web');
+  //
+  // if(platform.indexOf('iOS')>-1 || platform.indexOf('Android')>-1){
+  //   localStorage.setItem('path', 'phone');
+  // }
+  // console.log(localStorage.getItem('path'));
+  $stateProvider.state('login', {
+    url: '/login',
+    templateUrl: '/views/web/login.html',
+    controller: 'loginController'
+  })
+  .state('home',{
+    url:'/home',
+    templateUrl:function(){
+      if(ionic.Platform.isAndroid() || ionic.Platform.isIOS()){
+        return '/views/phone/home.html';
+      }
+      return '/views/web/home.html';
+    },
+    controller:'homeController'
   })
   .state('activities',{
     url:'/activities',
-    templateUrl:'/views/web/activities.html',
+    templateUrl:function() {
+      if (ionic.Platform.isAndroid() || ionic.Platform.isIOS()) {
+          return  '/views/phone/activities.html';
+      }
+      return "/views/web/activities.html";
+    },
     controller:'activitiesController'
   })
   .state('persons',{
     url:'/persons',
-    templateUrl:'/views/web/persons.html',
+    templateUrl:function() {
+      if (ionic.Platform.isAndroid() || ionic.Platform.isIOS()) {
+          return  '/views/phone/persons.html';
+      }
+      return "/views/web/persons.html";
+    },
     controller:'personsController'
   });
-  $urlRouterProvider.otherwise('/');
+  $urlRouterProvider.otherwise('/login');
 
 });
