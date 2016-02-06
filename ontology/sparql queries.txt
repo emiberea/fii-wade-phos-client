@@ -1,0 +1,24 @@
+select ?symptomName 
+where {
+	?o <http://phobia.vrinceanu.com/remedies#appearsFor> "Claustrophobia".
+	?o <http://phobia.vrinceanu.com/remedies#symptomName> ?symptomName
+}
+
+select ?description ?phobia
+where {
+  
+	?r <http://phobia.vrinceanu.com/remedies#forPhobia> <http://phobia.vrinceanu.com/remedies#Claustrophobia> .
+	?r <http://phobia.vrinceanu.com/remedies#description> ?description
+}
+
+select ?phobia
+where {
+  
+	?r rdf:type <http://phobia.vrinceanu.com/remedies#person> .
+  	?r <http://phobia.vrinceanu.com/remedies#hasPhobia> ?phobia
+}
+
+delete data
+{
+	<http://phobia.vrinceanu.com/remedies#emanuel.berea@gmail.com> <http://phobia.vrinceanu.com/remedies#hasPhobia> "http://phobia.vrinceanu.com/remedies#Claustrophobia"
+}
