@@ -1,0 +1,235 @@
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
+    <!ENTITY remedies "http://phobia.vrinceanu.com/remedies#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+	<!ENTITY foaf "http://xmlns.com/foaf/0.1/" >
+]>
+
+<rdf:RDF xmlns="http://phobia.vrinceanu.com/remedies#"
+	xml:base="http://phobia.vrinceanu.com/remedies#"
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:foaf="http://xmlns.com/foaf/0.1/"
+	xmlns:remedies="http://phobia.vrinceanu.com/remedies#">
+
+	<owl:Ontology rdf:about="">
+		<dc:title>Giving remedies to phobias</dc:title>
+		<dc:creator>Serseniuc Simona-Ecaterina</dc:creator>
+		<dc:creator>Berea Emanuel-Vasile</dc:creator>
+	</owl:Ontology>
+	
+	<owl:Class rdf:about="&remedies;remedy">
+		<rdfs:label>Remedy</rdfs:label>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&remedies;phobia">
+		<rdfs:label>Phobia</rdfs:label>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&remedies;activity">
+		<rdfs:label>Activity</rdfs:label>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&remedies;symptoms">
+		<rdfs:label>Symtopms</rdfs:label>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&remedies;person">
+		<rdfs:label>Person</rdfs:label>
+	</owl:Class>
+	
+	<owl:DatatypeProperty rdf:about="http://phobia.vrinceanu.com/remedies#description"/>
+	<owl:DatatypeProperty rdf:about="http://phobia.vrinceanu.com/remedies#symptomName" />
+	<owl:DatatypeProperty rdf:about="http://phobia.vrinceanu.com/remedies#appearsFor" />
+	<owl:DatatypeProperty rdf:about="http://phobia.vrinceanu.com/remedies#forActivity" />
+	<owl:DatatypeProperty rdf:about="http://phobia.vrinceanu.com/remedies#hasPhobia"/>
+	
+	<owl:ObjectProperty rdf:about="http://phobia.vrinceanu.com/remedies#forPhobia">
+		<rdfs:range rdf:resource="http://phobia.vrinceanu.com/remedies#remedy"/>
+        <rdfs:domain rdf:resource="http://phobia.vrinceanu.com/remedies#phobia"/>
+	</owl:ObjectProperty>
+	
+	<rdf:Description rdf:about="http://phobia.vrinceanu.com/remedies#simona.serseniuc@gmail.com">
+		<rdf:type rdf:resource="http://phobia.vrinceanu.com/remedies#person" />
+		<foaf:mbox>simona.serseniuc@gmail.com</foaf:mbox>
+		<foaf:name>Simona Serseniuc</foaf:name>
+		<foaf:sha1>parolaMea</foaf:sha1>
+		<remedies:hasPhobia>http://phobia.vrinceanu.com/remedies#Claustrophobia</remedies:hasPhobia>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="http://phobia.vrinceanu.com/remedies#emanuel.berea@gmail.com">
+		<rdf:type rdf:resource="http://phobia.vrinceanu.com/remedies#person" />
+		<foaf:mbox>semanuel.berea@gmail.com</foaf:mbox>
+		<foaf:name>Emanuel Berea</foaf:name>
+		<foaf:sha1>parolaTa</foaf:sha1>
+		<remedies:hasPhobia>http://phobia.vrinceanu.com/remedies#Claustrophobia</remedies:hasPhobia>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="http://phobia.vrinceanu.com/remedies#1">
+		<rdf:type rdf:resource="http://phobia.vrinceanu.com/remedies#remedy"/>
+		<description>When entering a room, they will look for a exists and position themself near them.</description>
+		<description>They will feel more anxious when all te doors are closed.</description>
+		<description>If elevators are part of your activity, avoid them and use the stairs instead.</description>
+		<description>Don't self-medicate with alcohol - it can make the problem worse</description>
+		<remedies:forPhobia rdf:resource="http://phobia.vrinceanu.com/remedies#Claustrophobia"/>
+		<remedies:forActivity> </remedies:forActivity>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="http://phobia.vrinceanu.com/remedies#2">
+		<rdf:type rdf:resource="http://phobia.vrinceanu.com/remedies#remedy"/>
+		<description>Get to the airport early, to avoid stress. Also get early at the gate, but board it late to minimise time 
+		spent on the plane.</description>
+		<description>Choose seats at the aisle.</description>
+		<description>Manage your diet and get enough sleep in the days leading up to your flight.</description>
+		<description>Having a note from the doctor about your condition will be great to have</description>
+		<remedies:forPhobia rdf:resource="http://phobia.vrinceanu.com/remedies#Claustrophobia"/>
+		<remedies:forPhobia rdf:resource="http://phobia.vrinceanu.com/remedies#FearOfFlying"/>
+		<remedies:forPhobia rdf:resource="http://phobia.vrinceanu.com/remedies#Acrophobia"/>
+		<remedies:forActivity>Flying</remedies:forActivity>
+	</rdf:Description>	
+	
+	<rdf:Description rdf:about="http://phobia.vrinceanu.com/remedies#3">
+		<rdf:type rdf:resource="http://phobia.vrinceanu.com/remedies#remedy"/>
+		<description>Make frequent stops and get out of the car.</description>
+		<remedies:forPhobia rdf:resource="http://phobia.vrinceanu.com/remedies#Claustrophobia"/>
+		<remedies:forActivity>Driving</remedies:forActivity>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="http://phobia.vrinceanu.com/remedies#4">
+		<rdf:type rdf:resource="http://phobia.vrinceanu.com/remedies#remedy"/>
+		<description>Choose a comfortable cabin; it should have windows that open.</description>
+		<remedies:forPhobia rdf:resource="http://phobia.vrinceanu.com/remedies#Claustrophobia"/>
+		<remedies:forActivity>Crusing</remedies:forActivity>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="http://phobia.vrinceanu.com/remedies#5">
+		<rdf:type rdf:resource="http://phobia.vrinceanu.com/remedies#remedy"/>
+		<description>If long drive, small seats, minimal leg room, spending hours in close contact with strangers is not good.</description>
+		<description>Try less popular routes at odd times - it can help you cope with long distance bus drive.</description>
+		<remedies:forPhobia rdf:resource="http://phobia.vrinceanu.com/remedies#Claustrophobia"/>
+		<remedies:forActivity>BusTravel</remedies:forActivity>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="http://phobia.vrinceanu.com/remedies#6">
+		<rdf:type rdf:resource="http://phobia.vrinceanu.com/remedies#remedy"/>
+		<description>Stay at the ground and enjoy other activities.</description>
+		<description>Don't go climbing or hiking</description>
+		<remedies:forPhobia rdf:resource="http://phobia.vrinceanu.com/remedies#Acrophobia"/>
+		<remedies:forActivity>Mountain</remedies:forActivity>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="http://phobia.vrinceanu.com/remedies#7">
+		<rdf:type rdf:resource="http://phobia.vrinceanu.com/remedies#remedy"/>
+		<description>If your activity implies higher floors, don't seat near the window.</description>
+		<remedies:forPhobia rdf:resource="http://phobia.vrinceanu.com/remedies#Acrophobia"/>
+		<remedies:forActivity>restaurant</remedies:forActivity>
+		<remedies:forActivity>empireStateBuilding</remedies:forActivity>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="http://phobia.vrinceanu.com/remedies#8">
+		<rdf:type rdf:resource="http://phobia.vrinceanu.com/remedies#remedy"/>
+		<description>Avoid this situation, maybe go to the nature museum, that not implies robots or inanimated objects.</description>
+		<remedies:forPhobia rdf:resource="http://phobia.vrinceanu.com/remedies#Automatonophobia"/>
+		<remedies:forActivity>scienceMuseum</remedies:forActivity>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="http://phobia.vrinceanu.com/remedies#9">
+		<rdf:type rdf:resource="http://phobia.vrinceanu.com/remedies#remedy"/>
+		<description>Avoid puppet or ventriloquist shows. Go to a movie instead.</description>
+		<remedies:forPhobia rdf:resource="http://phobia.vrinceanu.com/remedies#Automatonophobia"/>
+		<remedies:forActivity>theatre</remedies:forActivity>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="http://phobia.vrinceanu.com/remedies#10">
+		<rdf:type rdf:resource="http://phobia.vrinceanu.com/remedies#remedy"/>
+		<description>Don't go to a wax museum. They don't like humanoid figures.</description>
+		<remedies:forPhobia rdf:resource="http://phobia.vrinceanu.com/remedies#Automatonophobia"/>
+		<remedies:forActivity>MadameTussauds</remedies:forActivity>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="http://phobia.vrinceanu.com/remedies#11">
+		<rdf:type rdf:resource="http://phobia.vrinceanu.com/remedies#remedy"/>
+		<description>It's best to avoid this situations with a person that suffers from Chorophobia. He doens't like to be confronted about dancing at all.</description>
+		<description>They can become mad and lose control.</description>
+		<remedies:forPhobia rdf:resource="http://phobia.vrinceanu.com/remedies#Chorophobia"/>
+		<remedies:forActivity>dancing</remedies:forActivity>
+		<remedies:forActivity>party</remedies:forActivity>
+		<remedies:forActivity>weding</remedies:forActivity>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="http://phobia.vrinceanu.com/remedies#Claustrophobia">
+		<rdf:type rdf:resource="http://phobia.vrinceanu.com/remedies#phobia"/>
+		<rdfs:label>Claustrophobia</rdfs:label>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="http://phobia.vrinceanu.com/remedies#FearOfFlying">
+		<rdf:type rdf:resource="http://phobia.vrinceanu.com/remedies#phobia"/>
+		<rdfs:label>Fear of flying</rdfs:label>
+	</rdf:Description>
+	
+	<!-- Symtopms -->
+	<rdf:Description rdf:about="http://phobia.vrinceanu.com/remedies#Sweating">
+		<rdf:type rdf:resource="http://phobia.vrinceanu.com/remedies#symptoms"/>
+		<symptomName>Sweating</symptomName>
+		<remedies:appearsFor>Claustrophobia</remedies:appearsFor>
+		<remedies:appearsFor>Chorophobia</remedies:appearsFor>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="http://phobia.vrinceanu.com/remedies#AcceleratedHeartRate">
+		<rdf:type rdf:resource="http://phobia.vrinceanu.com/remedies#symptoms"/>
+		<symptomName>Accelerated heart rate</symptomName>
+		<remedies:appearsFor>Claustrophobia</remedies:appearsFor>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="http://phobia.vrinceanu.com/remedies#Diziness">
+		<rdf:type rdf:resource="http://phobia.vrinceanu.com/remedies#symptoms"/>
+		<symptomName>Diziness</symptomName>
+		<remedies:appearsFor>Claustrophobia</remedies:appearsFor>
+		<remedies:appearsFor>Acrophobia</remedies:appearsFor>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="http://phobia.vrinceanu.com/remedies#Hyperventilation">
+		<rdf:type rdf:resource="http://phobia.vrinceanu.com/remedies#symptoms"/>
+		<symptomName>Hyperventilation</symptomName>
+		<remedies:appearsFor>Claustrophobia</remedies:appearsFor>
+		<remedies:appearsFor>Chorophobia</remedies:appearsFor>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="http://phobia.vrinceanu.com/remedies#Shaking">
+		<rdf:type rdf:resource="http://phobia.vrinceanu.com/remedies#symptoms"/>
+		<symptomName>Shaking</symptomName>
+		<remedies:appearsFor>Claustrophobia</remedies:appearsFor>
+		<remedies:appearsFor>Acrophobia</remedies:appearsFor>	
+		<remedies:appearsFor>Automatonophobia</remedies:appearsFor>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="http://phobia.vrinceanu.com/remedies#PanicAttacks">
+		<rdf:type rdf:resource="http://phobia.vrinceanu.com/remedies#symptoms"/>
+		<symptomName>Panic attacks</symptomName>
+		<remedies:appearsFor>Claustrophobia</remedies:appearsFor>
+		<remedies:appearsFor>Chorophobia</remedies:appearsFor>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="http://phobia.vrinceanu.com/remedies#Nausea">
+		<rdf:type rdf:resource="http://phobia.vrinceanu.com/remedies#symptoms"/>
+		<symptomName>Nausea</symptomName>
+		<remedies:appearsFor>Claustrophobia</remedies:appearsFor>
+		<remedies:appearsFor>Acrophobia</remedies:appearsFor>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="http://phobia.vrinceanu.com/remedies#ChestPain">
+		<rdf:type rdf:resource="http://phobia.vrinceanu.com/remedies#symptoms"/>
+		<symptomName>Chest pain</symptomName>
+		<remedies:appearsFor>Claustrophobia</remedies:appearsFor>
+	</rdf:Description>
+	
+	<rdf:Description rdf:about="http://phobia.vrinceanu.com/remedies#Crying">
+		<rdf:type rdf:resource="http://phobia.vrinceanu.com/remedies#symptoms"/>
+		<symptomName>Crying</symptomName>
+		<remedies:appearsFor>Automatonophobia</remedies:appearsFor>
+	</rdf:Description>
+</rdf:RDF>
