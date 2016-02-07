@@ -1,0 +1,429 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "<PhoS>"
+    },
+    "schemes": [
+        "http"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/users": {
+            "get": {
+                "description": "Gets `Users` objects.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "The user with the specified id",
+                        "required": true,
+                        "type": "number",
+                        "format": "long"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "schema": {
+                            "title": "user",
+                            "type": "object",
+                            "items": {
+                                "title": "User",
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "familyName": {
+                                        "type": "string"
+                                    },
+                                    "birthDate": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "gender": {
+                                        "type": "string"
+                                    },
+                                    "phobias": {
+                                        "type": "array"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Adds a new `User` object",
+                "responses": {
+                    "201": {
+                        "description": "User is created",
+                        "schema": {
+                            "title": "userId",
+                            "type": "long"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "Modifies a `User`",
+                "responses": {
+                    "200": {
+                        "description": "Resource successfully modified",
+                        "schema": {
+                            "title": "user",
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                },
+                                "familyName": {
+                                    "type": "string"
+                                },
+                                "birthDate": {
+                                    "type": "string"
+                                },
+                                "email": {
+                                    "type": "string"
+                                },
+                                "gender": {
+                                    "type": "string"
+                                },
+                                "phobias": {
+                                    "type": "array"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/phobias": {
+            "get": {
+                "description": "Gets all the `Phobia` objects",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "The phobia at the specified id",
+                        "required": false,
+                        "type": "number",
+                        "format": "long"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "schema": {
+                            "title": "Phobias",
+                            "type": "array",
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                },
+                                "alternateName": {
+                                    "type": "string"
+                                },
+                                "description": {
+                                    "type": "string"
+                                },
+                                "cause": {
+                                    "type": "string"
+                                },
+                                "gender": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/phobias/user": {
+            "get": {
+                "description": "Get all the `Phobia` objects attached to a user",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "usersId",
+                        "required": true,
+                        "type": "number",
+                        "format": "long"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "schema": {
+                            "title": "UserPhobias",
+                            "type": "array"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Attach a new `Phobia` to a `User`",
+                "responses": {
+                    "201": {
+                        "description": "Phobia successfully added to User",
+                        "schema": {
+                            "title": "UserPhobias",
+                            "type": "array"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Delete a `Phobia` attached to a `User`",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "query",
+                        "description": "Users id",
+                        "required": true,
+                        "type": "number",
+                        "format": "long"
+                    },
+                    {
+                        "name": "phobiaId",
+                        "in": "query",
+                        "required": true,
+                        "type": "number",
+                        "format": "long"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful delete",
+                        "schema": "UserPhobias",
+                        "type": "array"
+                    }
+                }
+            }
+        },
+        "/persons/user": {
+            "get": {
+                "description": "Gets an array of `Person` of the given `User` id",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "usersId",
+                        "required": true,
+                        "type": "number",
+                        "format": "long"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "schema": {
+                            "title": "UserPhobias",
+                            "type": "array",
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                },
+                                "familyName": {
+                                    "type": "string"
+                                },
+                                "birthDate": {
+                                    "type": "string"
+                                },
+                                "email": {
+                                    "type": "string"
+                                },
+                                "gender": {
+                                    "type": "string"
+                                },
+                                "phobias": {
+                                    "type": "array"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Add a `Person` to a `User`",
+                "responses": {
+                    "201": {
+                        "description": "Person successfully added to User",
+                        "schema": {
+                            "title": "UserPersons",
+                            "type": "array"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "Modifies a `Person` attached to a `User`",
+                "responses": {
+                    "200": {
+                        "description": "Resource successfully modified",
+                        "schema": {
+                            "title": "persons user",
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                },
+                                "familyName": {
+                                    "type": "string"
+                                },
+                                "birthDate": {
+                                    "type": "string"
+                                },
+                                "email": {
+                                    "type": "string"
+                                },
+                                "gender": {
+                                    "type": "string"
+                                },
+                                "phobias": {
+                                    "type": "array"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Delete a `Person` attached to a `User`",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "query",
+                        "description": "Users id",
+                        "required": true,
+                        "type": "number",
+                        "format": "long"
+                    },
+                    {
+                        "name": "personId",
+                        "in": "query",
+                        "required": true,
+                        "type": "number",
+                        "format": "long"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful delete",
+                        "schema": "UserPersons",
+                        "type": "array"
+                    }
+                }
+            }
+        },
+        "/activity/user": {
+            "get": {
+                "description": "Get all `Activity` objects from a `User`",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "usersId",
+                        "required": true,
+                        "type": "number",
+                        "format": "long"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "schema": {
+                            "title": "UserActivities",
+                            "type": "array",
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                },
+                                "location": {
+                                    "type": "string"
+                                },
+                                "description": {
+                                    "type": "string"
+                                },
+                                "persons": {
+                                    "type": "array"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Add a new `Activity` object to a `User`",
+                "responses": {
+                    "201": {
+                        "description": "Activity successfully added to User",
+                        "schema": {
+                            "title": "UserActivities",
+                            "type": "array"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "Modifies a `Activity` attached to a `User`",
+                "responses": {
+                    "200": {
+                        "description": "Resource successfully modified",
+                        "schema": {
+                            "title": "activity user",
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                },
+                                "location": {
+                                    "type": "string"
+                                },
+                                "description": {
+                                    "type": "string"
+                                },
+                                "persons": {
+                                    "type": "array"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Delete a `Activity` attached to a `User`",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "query",
+                        "description": "Users id",
+                        "required": true,
+                        "type": "number",
+                        "format": "long"
+                    },
+                    {
+                        "name": "activityId",
+                        "in": "query",
+                        "required": true,
+                        "type": "number",
+                        "format": "long"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful delete",
+                        "schema": "UserAcitivities",
+                        "type": "array"
+                    }
+                }
+            }
+        }
+    }
+}

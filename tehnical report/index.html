@@ -1,0 +1,240 @@
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" href="style.css"/>
+	<title>PhoS</title>
+</head>
+
+<body>
+	<h1>PhoS - Phobia Smart Assistent</h1>
+
+	<section>
+		<h3>0. Contributors</h3>
+		<ul>
+			<li>Berea V. Emanuel-Vasile, Software Systems Engineering, 2nd year</li>
+			<li>Serseniuc D. Simona-Ecaterina, Software Systems Engineering, 2nd year</li>
+		</ul>
+	</section>
+
+	<section>
+		<h3>1. Introduction</h3>
+		<div>
+			<p>The purpose of this application is to help users better plan their activities.
+				The user is able to creat an acount and register his - if he has any - phobias. He will be able
+				to register persons that he is in contact with and their phobias.
+			<p>When planning a future activity, the user will give a description of what the activity consist and he
+				will link the persons from his account with the activity and/or add new phobias.
+				The application will generate a list of suggestions and drugs based on phobias of the user and of his linked persons. </p>
+			<p>The application will be available in browser - desktop, tablet and phone.</p>
+		</div>
+
+		<div>
+			<p>PhoS (Phobia Smart Assistant)</p>
+			<ul>
+				<li>is a <b>semantic web application</b></li>
+				<li>help the user to create a profile and assign to himself phobias and activities</li>
+				<li><b> manage</b> a list of <b>contact persons</b></li>
+				<li>search for <b>informations</b> about a <b>phobia</b> and attach it to persons and activities</li>
+				<li>attach a list of phobias and activities to each person</li>
+				<li>display <b>warnings</b> and suggest <b>remedies</b> for an activity that take place for a set of persons</li>
+			</ul>
+		</div>
+	</section>
+
+	<section>
+		<h3>2. Use cases</h3>
+		<p>As a user i want to:</p>
+		<ul>
+			<li>find information about a phobia</li>
+			<li>register persons to my account</li>
+			<li>atach to a person the phobias that he/she has</li>
+			<li>get warnings and remedies about a created event</li>
+		</ul>
+		<p>Bellow we present some UseCase diagrams</p>
+		<img src="usecases/login_register_workflow.png" height="350px">
+		<p class="middle">Login/Register Workflow</p>
+		<img src="usecases/search_phobias_workflow.png" height="350px">
+		<p class="middle"> Search phobia Workflow</p>
+		<img src="usecases/person_workflow.png" height="350px">
+		<p class="middle">Person Workflow</p>
+		<img src="usecases/activity_workflow.png" height="350px">
+		<p class="middle">Activity Workflow</p>
+		<img src="usecases/remedies_workflow.png" height="350px">
+		<p class="middle">Remedies Workflow</p>
+
+	</section>
+
+	<section>
+		<h3>3. Architecture</h3>
+		<img src="architecture.png" width="600px">
+
+		Wireframes
+		<p><a href="PhoS - desktop.pdf" target="_blank">Desktop</a></p>
+		<p><a href="PhoS-tablet.pdf" target="_blank">Tablet</a></p>
+		<p><a href="PhoS-phone.pdf" target="_blank">Phone</a></p>
+
+
+	</section>
+
+	<section>
+		<h3>4. Tehnologies</h3>
+		<h4>4.1. Client</h4>
+			<ul>
+				<li>AngularJS</li>
+			</ul>
+		<h4>4.2. Server</h4>
+			<ul>
+				<li>will expose a REST API developed using Symfony PHP framework</li>
+				<li>possible PHP libraries that we could use in order to interact (extract/serialize/convert) with the RDF data:
+					<ul>
+						<li>ARC2 - <a href"https://github.com/semsol/arc2" target="_blank">https://github.com/semsol/arc2</a></li>
+						<li>EasyRDF
+							<ul>
+								<li>  <a href"http://www.easyrdf.org/" target="_blank"> http://www.easyrdf.org/</a></li>
+								<li><a href"https://github.com/njh/easyrdf" target="_blank">https://github.com/njh/easyrdf</a></li>
+							</ul>
+						</li>
+						<li>sparqllib
+							<ul>
+								<li><a href"http://graphite.ecs.soton.ac.uk/sparqllib/" target="_blank">http://graphite.ecs.soton.ac.uk/sparqllib/</a></li>
+								<li><a href"https://github.com/cgutteridge/PHP-SPARQL-Lib" target="_blank">https://github.com/cgutteridge/PHP-SPARQL-Lib</a></li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+			</ul>
+			The main modules of the server will be:
+			<ul>
+				<li>Repository - the classes that have the SPARQL queries</li>
+				<li>Manager - the classes that will process the data that we get</li>
+				<li>Controller - controllers that will expose the API</li>
+			</ul>
+
+			Symfony libraries that might help for developing the REST API
+			<ul>
+				<li><a href="https://github.com/FriendsOfSymfony/FOSRestBundle">https://github.com/FriendsOfSymfony/FOSRestBundle</a></li>
+				<li><a href="https://github.com/willdurand/BazingaRestExtraBundle">https://github.com/willdurand/BazingaRestExtraBundle</a></li>
+			</ul>
+			Other REST API related libraries
+			<ul>
+				<li><a href="https://github.com/willdurand/BazingaHateoasBundle">https://github.com/willdurand/BazingaHateoasBundle</a></li>
+				<li><a href="https://github.com/willdurand/Negotiation">https://github.com/willdurand/Negotiation</a></li>
+				<li><a href="https://github.com/nelmio/NelmioApiDocBundle">https://github.com/nelmio/NelmioApiDocBundle</a></li>
+			</ul>
+			Cache related library
+			<ul>
+				<li><a href="https://github.com/doctrine/DoctrineCacheBundle">https://github.com/doctrine/DoctrineCacheBundle (can register custom cache providers like: APC, mongoDB, redis, etc.)</a></li>
+			</ul>
+
+
+		</section>
+
+		<section>
+			<h3>5. Data sources</h3>
+			<p>Will use as data sources:</p>
+			<ul>
+				<li>dbpedia: <a href="http://dbpedia.org/page/Category:Phobias" target="_blank">http://dbpedia.org/page/Category:Phobias</a></li>
+				<li>wikidata:<a href="https://www.wikidata.org/wiki/Q175854" target="_blank"> https://www.wikidata.org/wiki/Q175854 </a></li>
+				<li>our own RDF store:
+					<ul>
+						<li>stardog database</li>
+						<li>will store data about the users, the contact persons and the event/context/activities that the persons can take part</li>
+						<li>will use FOAF (Friend of a Friend) vocabulary to model the user relations</li>
+						<li>will use to store and model the activities/contexts that a user/person can take part</li>
+					</ul>
+				</li>
+			</ul>
+			<h4>Concepts - schema.org</h4>
+			Bellow are the concepts that we are going to use in the application.
+
+			<ul>
+				<li>Person - <a href="https://schema.org/Person" target="_blank">https://schema.org/Person </a>
+					<ul>
+						<li>name</li>
+						<li>familyName</li>
+						<li>gender</li>
+						<li>birthDate</li>
+						<li>email</li>
+						<li>knows</li>
+					</ul>
+				</li>
+
+				<li>Event -<a href="https://schema.org/Event" target="_blank"> https://schema.org/Event </a>
+					<ul>
+						<li>attendee</li>
+						<li>inLanguage</li>
+						<li>location</li>
+						<li>organizer</li>
+						<li>review - may be used for suggestions</li>
+						<li>description</li>
+						<li>name</li>
+					</ul>
+				</li>
+				<li>MedicalCondition -<a href="https://schema.org/MedicalCondition" target="_blank"> https://schema.org/MedicalCondition </a>
+					<ul>
+						<li>cause</li>
+						<li>differentialDiagnostic</li>
+						<li>possibleCondition</li>
+						<li>alternateName</li>
+						<li>description</li>
+						<li>name</li>
+						<li>sameAs</li>
+						<li>url</li>
+					</ul>
+				</li>
+				<li>PhysicalActivity - <a href="https://schema.org/PhysicalActivity" target="_blank">https://schema.org/PhysicalActivity</a>
+					<ul>
+						<li>pathophysiology</li>
+						<li>adversoutcome</li>
+						<li>contraindication</li>
+						<li>indication</li>
+						<li>description</li>
+						<li>name</li>
+					</ul>
+				</li>
+				<li>Drug -<a href="https://schema.org/Drug" target="_blank"> https://schema.org/Drug</a>
+					<ul>
+						<li>administrationRate</li>
+						<li>alcoholWarning</li>
+						<li>breastfeedingWarning</li>
+						<li>dosageForm</li>
+						<li>doseSchedule</li>
+						<li>foodWarning</li>
+						<li>labelDetails</li>
+						<li>overdosage</li>
+						<li>relatedDrugs</li>
+						<li>prescribingInfo</li>
+						<li>warning</li>
+						<li>alternateName</li>
+						<li>description</li>
+						<li>image</li>
+						<li>name</li>
+						<li>url</li>
+					</ul>
+				</li>
+			</ul>
+		</section>
+
+		<section>
+			<h3>6. Web API</h3>
+			<p>See the <a href="phos.yaml" target="_blank">yaml</a> or the <a href="phos.json" target="_blank">json</a> version of the web API</p>
+			<img src="diagram.png" height="500px">
+		</section>
+		<section>
+			<h3>7. Bibliography</h3>
+			<ul>
+				<li><a href="http://wiki.dbpedia.org/" target="_blank">http://wiki.dbpedia.org/</a></li>
+				<li><a href="https://www.wikidata.org/wiki/Wikidata:Main_Page" target="_blank">https://www.wikidata.org/wiki/Wikidata:Main_Page</a></li>
+				<li><a href="http://schema.org/" target="_blank">http://schema.org/</a></li>
+				<li><a href="http://martinfowler.com/articles/richardsonMaturityModel.html" target="_blank">http://martinfowler.com/articles/richardsonMaturityModel.html</a></li>
+				<li><a href="https://code.google.com/p/implementing-rest/wiki/RMM" target="_blank">https://code.google.com/p/implementing-rest/wiki/RMM</a></li>
+				<li><a href="http://williamdurand.fr/2012/08/02/rest-apis-with-symfony2-the-right-way/" target="_blank">http://williamdurand.fr/2012/08/02/rest-apis-with-symfony2-the-right-way/</a></li>
+				<li><a href="https://docs.angularjs.org/guide" target="_blank">https://docs.angularjs.org/guide</a></li>
+				<li><a href="http://symfony.com/doc/current/index.html" target="_blank">http://symfony.com/doc/current/index.html</a></li>
+				<li><a href="https://github.com/njh/easyrdf" target="_blank">https://github.com/njh/easyrdf</a></li>
+				<li><a href="http://www.easyrdf.org/" target="_blank">http://www.easyrdf.org/</a></li>
+				<li><a href="http://docs.stardog.com/" target="_blank">http://docs.stardog.com/</a></li>
+			</ul>
+		</section>
+</body>
+</html>
