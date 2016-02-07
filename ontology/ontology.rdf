@@ -53,21 +53,6 @@
         <rdfs:domain rdf:resource="http://phobia.vrinceanu.com/remedies#phobia"/>
 	</owl:ObjectProperty>
 	
-	<rdf:Description rdf:about="http://phobia.vrinceanu.com/remedies#simona.serseniuc@gmail.com">
-		<rdf:type rdf:resource="http://phobia.vrinceanu.com/remedies#person" />
-		<foaf:mbox>simona.serseniuc@gmail.com</foaf:mbox>
-		<foaf:name>Simona Serseniuc</foaf:name>
-		<foaf:sha1>parolaMea</foaf:sha1>
-		<remedies:hasPhobia>http://phobia.vrinceanu.com/remedies#Claustrophobia</remedies:hasPhobia>
-	</rdf:Description>
-	
-	<rdf:Description rdf:about="http://phobia.vrinceanu.com/remedies#emanuel.berea@gmail.com">
-		<rdf:type rdf:resource="http://phobia.vrinceanu.com/remedies#person" />
-		<foaf:mbox>semanuel.berea@gmail.com</foaf:mbox>
-		<foaf:name>Emanuel Berea</foaf:name>
-		<foaf:sha1>parolaTa</foaf:sha1>
-		<remedies:hasPhobia>http://phobia.vrinceanu.com/remedies#Claustrophobia</remedies:hasPhobia>
-	</rdf:Description>
 	
 	<rdf:Description rdf:about="http://phobia.vrinceanu.com/remedies#1">
 		<rdf:type rdf:resource="http://phobia.vrinceanu.com/remedies#remedy"/>
@@ -87,7 +72,7 @@
 		<description>Manage your diet and get enough sleep in the days leading up to your flight.</description>
 		<description>Having a note from the doctor about your condition will be great to have</description>
 		<remedies:forPhobia rdf:resource="http://phobia.vrinceanu.com/remedies#Claustrophobia"/>
-		<remedies:forPhobia rdf:resource="http://phobia.vrinceanu.com/remedies#FearOfFlying"/>
+		<remedies:forPhobia rdf:resource="http://phobia.vrinceanu.com/remedies#Fear_of_flying"/>
 		<remedies:forPhobia rdf:resource="http://phobia.vrinceanu.com/remedies#Acrophobia"/>
 		<remedies:forActivity>Flying</remedies:forActivity>
 	</rdf:Description>	
@@ -160,17 +145,7 @@
 		<remedies:forActivity>party</remedies:forActivity>
 		<remedies:forActivity>weding</remedies:forActivity>
 	</rdf:Description>
-	
-	<rdf:Description rdf:about="http://phobia.vrinceanu.com/remedies#Claustrophobia">
-		<rdf:type rdf:resource="http://phobia.vrinceanu.com/remedies#phobia"/>
-		<rdfs:label>Claustrophobia</rdfs:label>
-	</rdf:Description>
-	
-	<rdf:Description rdf:about="http://phobia.vrinceanu.com/remedies#FearOfFlying">
-		<rdf:type rdf:resource="http://phobia.vrinceanu.com/remedies#phobia"/>
-		<rdfs:label>Fear of flying</rdfs:label>
-	</rdf:Description>
-	
+
 	<!-- Symtopms -->
 	<rdf:Description rdf:about="http://phobia.vrinceanu.com/remedies#Sweating">
 		<rdf:type rdf:resource="http://phobia.vrinceanu.com/remedies#symptoms"/>

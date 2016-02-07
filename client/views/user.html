@@ -1,24 +1,29 @@
 <div class="row" style="width:70%;margin:0 auto;">
+  <div itemscope itemtype="http://schema.org/Person">
     <form role="form" ng-submit="submit()" name="logForm" style="margin-top:50px;">
       <div class="form-group">
-          <input type="text" class="form-control" id="name" placeholder="Name *" ng-model="name" /> <!--required-->
+          <input type="text" class="form-control" id="name" placeholder="Name *" ng-model="name" itemprop="name"/> <!--required-->
       </div>
       <div class="form-group">
-          <input type="email" class="form-control" id="email" placeholder="Email *" ng-model="email" />
+          <input type="email" class="form-control" id="email" placeholder="Email *" ng-model="email" itemprop="email" />
       </div>
       <!-- <div class="form-group"> -->
           <select type="text"
               class="form-control selectButtonRow"
-              ng-model="device"
+              ng-model="phobia"
               ng-options="device.device.Name for device in deviceList | orderBy:'device.Name'" >
               <option value="">-Choose Phobias-</option> -->
-              <option ng-repeat="device in deviceList | orderBy:'device.Name'" ng-model="device" value="device.device.DeviceId">{{device.device.Name}}</option>
+              <option ng-repeat="device in deviceList | orderBy:'device.Name'" ng-model="phobia" value="device.device.DeviceId">{{device.device.Name}}</option>
           </select>
 
-          <a ng-click="" class="phobiaAddBtn"><span class="glyphicon glyphicon-ok"></span></a>
-
+          <a ng-click="addPhobiaToUser(phobia)" class="phobiaAddBtn"><span class="glyphicon glyphicon-ok"></span></a>
+          <div class="row" style="margin-top:20px;" ng-repeat="label in newUserPhobiaLabels">
+            <label style="display:inline; width:90%;margin-left:20px;">{{label}}</label>
+            <a ng-click="removePhobiaFromNewUser($index)" class="phobiaAddBtn"><span class="glyphicon glyphicon-remove"></span></a>
+          </div>
       <divc class="row" style="margin-top:10px">
         <input type="submit" id="submit" class="btn btn-lg btn-success btn-block" value="Save"/>
       </div>
     </form>
+  </div>
 </div>

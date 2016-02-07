@@ -13,18 +13,21 @@
         <input type="password" class="form-control" name="password" ng-model="password" placeholder="Password" required>
       </div>
       <!-- <div class="form-group"> -->
-          <select type="text"
-              class="form-control selectButtonRow"
-              ng-model="device"
-              ng-options="device.device.Name for device in deviceList | orderBy:'device.Name'" >
-              <option value="">-Choose Phobias-</option> -->
-              <option ng-repeat="device in deviceList | orderBy:'device.Name'" ng-model="device" value="device.device.DeviceId">{{device.device.Name}}</option>
-          </select>
+        <select type="text"
+            class="form-control selectButtonRow"
+            ng-model="phobia"
+            ng-options="phobia.label for phobia in phobias | orderBy:'phobia.label'" >
+            <option value="">-Choose Phobias-</option> -->
+            <option ng-repeat="phobia in phobias | orderBy:'phobia.label'" ng-model="phobia" value="phobia.phobia">{{phobia.label}}</option>
+        </select>
 
-          <a ng-click="" class="phobiaAddBtn"><span class="glyphicon glyphicon-ok"></span></a>
-
+        <a ng-click="addPhobiaToNewUser(phobia)" class="phobiaAddBtn"><span class="glyphicon glyphicon-ok"></span></a>
+        <div class="row" style="margin-top:20px;" ng-repeat="label in newUserPhobiaLabels">
+          <label style="display:inline; width:90%;margin-left:20px;">{{label}}</label>
+          <a ng-click="removePhobiaFromNewUser($index)" class="phobiaAddBtn"><span class="glyphicon glyphicon-remove"></span></a>
+        </div>
       <!-- </div> -->
-      <divc class="row" style="margin-top:10px">
+      <div class="row" style="margin-top:10px">
         <input type="submit" id="submit" class="btn btn-lg btn-success btn-block" value="Register"/>
       </div>
     </form>

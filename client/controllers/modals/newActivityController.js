@@ -12,6 +12,11 @@ app.controller("newActivityController", function ($rootScope, $scope, $http, $mo
         }
     }
 
+    $scope.saveNewActivity = function(){
+      var description = $scope.description.toLowerCase();
+      
+    }
+
 
     // $scope.saveNewDevice = function () {
     //     loading.show();

@@ -47,7 +47,7 @@
                   <input type="search" placeholder="Search" ng-model="searchPhobia" class="form-control"/>
               </div>
               <div class="col-md-4 menuLinks">
-                <a href="#">{{loggedUser}}</a>
+                <a ng-click="goToUser()">{{loggedUser}}</a>
                 <a ng-click="goToActivities()">Activities</a>
                 <a ng-click="goToPersons()">Persons</a>
                 <a href="http://phobia.vrinceanu.com/wp/" target="_blank" >Blog</a>

@@ -6,21 +6,9 @@
 
     <form role="form">
         <div class="form-group">
-            <!--<label for="name">Name</label>-->
-            <input type="text" class="form-control" id="name" placeholder="Name *" ng-model="name" ng-class="{deviceError: errorDevice}"/>
+            <input type="text" class="form-control" id="name" placeholder="Name" ng-model="name" ng-class="{deviceError: errorDevice}"/>
         </div>
-        <!-- <div class="form-group">
-            <label> Device</label>
-            <select type="text"
-                class="form-control"
-                ng-model="person"
-                ng-options="person.Name for device in deviceList | orderBy:'device.Name'" required>
-                <option value="">-Choose a device-</option>
-                <option ng-repeat="device in deviceList | orderBy:'device.Name'" ng-model="device" value="device.device.DeviceId">{{device.device.Name}}</option>
-             </select>
-        </div> -->
         <div class="form-group">
-            <!--<label for="owner">Owner</label>-->
             <input type="textarea" class="form-control" id="owner" placeholder="Short description" ng-model="description"/>
         </div>
     </form>

@@ -35,6 +35,11 @@ app.config(function ($routeProvider, $stateProvider, $urlRouterProvider, $locati
             templateUrl: 'views/home.html',
             controller: "homeController"
         })
+        .state('/user', {
+            url: '/user',
+            templateUrl: 'views/user.html',
+            controller: "loginController"
+        })
         .state('/activities', {
             url: '/activities',
             templateUrl: 'views/activities.html',
