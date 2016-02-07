@@ -2,7 +2,7 @@
   $rootScope.data.logged = localStorage.getItem("logged");
 
   if($rootScope.data.logged){
-    $rootScope.loggedUser = localStorage.getItem("loggedUser");
+    $rootScope.currentUser = angular.fromJson(localStorage.getItem("loggedUser"));
   }
 
   $scope.goToActivities = function(){

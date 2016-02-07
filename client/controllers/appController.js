@@ -15,6 +15,11 @@ app.run(function ($rootScope) {
         response: "",
         newDevice: false
     }
+
+    var phobias = localStorage.getItem("phobias");
+    if(phobias){
+      $rootScope.phobias = angular.fromJson(phobias);
+    }
 });
 
 
@@ -38,7 +43,7 @@ app.config(function ($routeProvider, $stateProvider, $urlRouterProvider, $locati
         .state('/user', {
             url: '/user',
             templateUrl: 'views/user.html',
-            controller: "loginController"
+            controller: "userController"
         })
         .state('/activities', {
             url: '/activities',

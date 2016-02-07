@@ -2,7 +2,7 @@ app.controller("personController", function ($scope, $http, $rootScope, $modal, 
   $rootScope.data.logged = localStorage.getItem("logged");
   if($rootScope.data.logged){
 
-    $rootScope.loggedUser = localStorage.getItem("loggedUser");
+    $rootScope.currentUser = angular.fromJson(localStorage.getItem("loggedUser"));
   }
   $scope.newPersonModal = function (person) {
         var info;

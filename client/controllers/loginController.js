@@ -19,17 +19,25 @@
               "password": $scope.password
             }
         }).success(function (data) {
-            loading.hide();
             console.log("DATA", data);
             if(data.status ==200){
-              loading.hide();
-              $rootScope.data.logged = true;
-              $rootScope.loggedUser = 'Simona';
+              $http({
+                  method: "GET",
+                  url: settings.BASE_API_URL + "users/" + $scope.email
+              }).success(function(data){
+                $rootScope.currentUser = data.data;
+                console.log(data);
+                loading.hide();
 
-              localStorage.setItem("logged", true);
-              localStorage.setItem("loggedUser", $rootScope.loggedUser);
+                $rootScope.data.logged = true;
+                localStorage.setItem("logged", true);
+                // $rootScope.loggedUser = data.data.name;
+                localStorage.setItem("loggedUser", angular.toJson($rootScope.currentUser));
 
-              $state.go("/home");
+                $state.go("/home");
+              }).error(function(data){
+
+              });
             }
         }).error(function (data) {
             loading.hide();
@@ -69,7 +77,8 @@
         data: {
           "email":$scope.email,
           "name":$scope.name,
-          "password": $scope.password
+          "password": $scope.password,
+          "phobias": $scope.newUserPhobias
         }
     }).success(function (data) {
         loading.hide();
@@ -93,7 +102,7 @@
       $rootScope.data.admin = false;
       $rootScope.data.logged = false;
       $rootScope.data.response = "";
-      localStorage.setItem("logged", false);
+      localStorage.removeItem("logged", null);
       localStorage.setItem("loggedUser", "");
       $state.go("/");
   }
