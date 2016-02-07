@@ -1,0 +1,33 @@
+﻿
+<div class="modal-header">
+    <h3 class="modal-title">New Person</h3>
+</div>
+<div class="modal-body">
+
+    <form role="form">
+        <div class="form-group">
+            <input type="text" class="form-control" id="name" placeholder="Name *" ng-model="personName" ng-class="{deviceError: errorDevice}"/>
+        </div>
+        <!-- <div class="form-group">
+            <label> Device</label>
+            <select type="text"
+                class="form-control"
+                ng-model="person"
+                ng-options="person.Name for device in deviceList | orderBy:'device.Name'" required>
+                <option value="">-Choose a device-</option>
+                <option ng-repeat="device in deviceList | orderBy:'device.Name'" ng-model="device" value="device.device.DeviceId">{{device.device.Name}}</option>
+             </select>
+        </div> -->
+    </form>
+
+    <h6 ng-show="errorDevice" ng-class="{deviceErrorMessage: errorDevice}">Please fill in the Name of the device</h6>
+    <!--"-->
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="savePerson()" >
+        <span ng-show="!newPerson">Save</span>
+        <span ng-show="newPerson">Add</span>
+    </button>
+
+    <button class="btn btn-warning" ng-click="cancelPersonModal()">Cancel</button>
+</div>

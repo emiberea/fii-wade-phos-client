@@ -1,0 +1,151 @@
+body{
+   padding-top: 20px;
+   padding-bottom: 20px;
+   width: 100%;
+}
+
+.login{
+    margin-top:50px;
+}
+
+
+.header h3 {
+    padding-bottom: 19px;
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 40px;
+}
+
+.greenbar {
+    width: 100%;
+}
+
+/* Customize container */
+@media (min-width: 768px) {
+    .container {
+      width: 100%;
+    }
+
+    .greenbar {
+        width: 100%;
+    }
+}
+
+
+.phosContent{
+  margin:0 auto;
+  width:90%;
+}
+.phosContent .login{
+  width: 100%;
+}
+.spinnerDiv {
+    display: block;
+    position: fixed;
+    z-index: 1020;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba( 255, 255, 255, .8 )
+                url(../img/load.gif)
+                50% 50%
+                no-repeat;
+}
+
+.searchBar{
+    margin-top: 20px;
+}
+
+.phosMenu{
+  margin:0 10px;
+}
+.menuLinks{
+  margin-top: 25px;
+}
+.menuLinks a{
+  font-size: 15px;
+  margin-right: 5px;
+}
+
+.phobiaAddBtn span{
+    font-size:20px;
+    float: right;
+}
+.selectButtonRow{
+  display: inline;
+  width: 90%;
+}
+
+.bar{
+    margin-bottom: 10px;
+}
+
+.availabilityDevice{
+    height:17px;
+    margin-top: -4px;
+}
+
+.availabilitySpan{
+    font-size: 15px;
+    margin-right: 10px;
+}
+
+.available{
+    color:#18A86E
+}
+
+.notAvailable{
+    color:#F05B5B
+}
+
+table a, a:hover {
+    color:#000;
+    text-decoration:none;
+}
+
+.disabledDate {
+    background-color: white !important;
+}
+
+.noDisplay{
+    display:none !important;
+}
+
+.logoutBtn{
+    background-color: white;
+    border: 0;
+    color:#c81f1f;
+    right: 10px;
+
+    position: absolute;
+    bottom: 0;
+}
+
+.custom_header{
+    position:relative;
+}
+
+.deviceError{
+    border-color: #c81f1f;
+}
+
+.deviceErrorMessage{
+    color: #c81f1f;
+    text-align: center;
+}
+
+.oneRowHeader{
+  margin: 40px 0;
+}
+.oneRowHeader h3{
+  display: inline;
+}
+
+.glyphicon{
+  font-size:30px;
+}
+
+.buttonSpace a{
+  margin:0 20px;
+}

@@ -1,0 +1,48 @@
+<div class="row">  
+    <div class="col-md-2" >
+        
+    </div>
+    <div class="col-md-8">
+        <section ng-controller="panelController">
+            <ul class="nav nav-pills">
+                <li ng-class="{active: isSelected(1)}">
+                    <a href="" ng-click="selectTab(1)">Devices</a>
+
+                </li>
+            </ul>
+        
+
+            
+            <div class=" panel" ng-show="isSelected(1)">              
+                 <div class="row bar">
+                   
+                    <div class="col-md-4 pull-right searchBar">
+                        <input type="search" placeholder="Search" ng-model="searchDevice" class="form-control"/>
+                    </div>
+                </div>          
+                <accordion close-others="oneAtATime" >
+                    <accordion-group heading="{{d.device.name}}" ng-repeat="d in deviceList |filter:searchDevice" is-open="status.open">
+                        <accordion-heading>
+                            <!--<img src="resources/img/locked.png" ng-show="!d.returned" class="availabilityDevice"/>
+                            <img src="resources/img/unlocked.png" ng-show="d.returned" class="availabilityDevice"/>-->
+                            {{d.device.Name}} <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-up': status.open, 'glyphicon-chevron-down': !status.open}"></i>
+                                           <!-- <i class="pull-right glyphicon glyphicon-ok"></i>-->
+                            <span class="pull-right availabilitySpan notAvailable" ng-show="!d.returned"> Not available </span>
+                            <span class="pull-right availabilitySpan available" ng-show="d.returned"> Available </span>
+                        </accordion-heading>
+                        <label>Operating Sistem</label>
+                        <p>{{d.device.OperatingSystem}}</p>
+                        <label>Owner</label>
+                        <p>{{d.device.Owner}}</p>
+                        <label>Others</label>
+                        <p>{{d.device.Others}}</p>
+                    </accordion-group>
+               
+                </accordion>                               
+            </div>
+
+
+        </section>
+    </div>
+    <div class="col-md-2"></div>
+</div>

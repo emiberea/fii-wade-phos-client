@@ -1,0 +1,243 @@
+
+
+<div class="row">
+  <h4>About phobias</h4>
+
+</div>
+
+<!-- <div class="row">
+    <div class="col-md-4" ng-class="{noDisplay: !data.admin}">
+        <div ng-controller="panelController">
+
+        <form role="form" ng-submit="submit()" name="logForm">
+            <p>{{logForm.input.$error}}</p>
+            <div class="form-group">
+                <label> Device</label>
+                <select type="text"
+                    class="form-control"
+                    ng-model="device"
+                    ng-options="device.device.Name for device in deviceList | orderBy:'device.Name'" required>
+                    <option value="">-Choose a device-</option> -->
+                    <!--<option ng-repeat="device in deviceList | orderBy:'device.Name'" ng-model="device" value="device.device.DeviceId">{{device.device.Name}}</option>-->
+                <!-- </select>
+            </div>
+
+            <div class="form-group">
+                <label> Person</label>
+                <select type="text" class="form-control" ng-model="person" ng-options="person.DisplayName for person in persons | orderBy: 'DisplayName'" required>
+                    <option value="">-Choose a person-</option>
+                </select>
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                     <div class="form-group"> -->
+                         <!-- <label> Booked date</label>
+                         <p class="input-group">
+                             <input type="text" class="form-control disabledDate" datepicker-popup="{{format}}" ng-model="takenDate"
+                                  ng-change="resetReturn()" is-open="openedTaken" min-date="minDate"
+                                 datepicker-options="dateOptions" date-disabled="disabled(date, mode)"
+                                 ng-required="true" close-text="Close" required readonly/>
+                             <span class="input-group-btn">
+                                  <button type="button" class="btn btn-default" ng-click="openDatepicker($event, true)"><i class="glyphicon glyphicon-calendar"></i></button>
+                             </span>
+                         </p>
+
+                     </div>
+                    <div class="form-group">
+                         <label> Booked hour</label>
+                         <timepicker ng-model="takenTime" hour-step="1" minute-step="1" show-meridian="false" required></timepicker>
+
+                     </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label> Return date</label>
+                        <p class="input-group">
+                             <input type="text" class="form-control disabledDate"
+                                    datepicker-popup="{{format}}" ng-model="returnDate"
+                                    is-open="opened" min-date="takenDate" datepicker-options="dateOptions"
+                                    date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" required readonly/>
+                             <span class="input-group-btn">
+                                  <button type="button" class="btn btn-default" ng-click="openDatepicker($event,false)"><i class="glyphicon glyphicon-calendar"></i></button>
+                             </span>
+                         </p>
+                    </div> -->
+                    <!-- <div class="form-group">
+                        <label> Return hour</label>
+                        <timepicker ng-model="returnTime" hour-step="1" minute-step="1" show-meridian="false" required></timepicker>
+                    </div>
+                </div>
+            </div>
+
+             -->
+             <!--<div class="form-group">-->
+                <!-- <label>Cable</label>
+                <input type="checkbox"  ng-model="cable">  -->
+            <!--</div>-->
+
+
+            <!-- <input type="submit" id="submit" class="btn btn-sm btn-default pull-right" value="Log"/>
+        </form>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <section ng-controller="panelController">
+            <ul class="nav nav-pills">
+                <li ng-class="{active: isSelected(1)}">
+                    <a href="" ng-click="selectTab(1)">Devices</a>
+
+                </li>
+                <li ng-class="{active: isSelected(2), noDisplay: !data.admin}">
+                    <a href="" ng-click="selectTab(2);" ng-class="{noDisplay: !data.admin}">Logs</a>
+
+                </li>
+            </ul>
+         -->
+
+            <!--
+            <div class=" panel" ng-show="isSelected(1)">
+                 <div class="row bar">
+
+                    <div class="col-md-4 pull-right searchBar">
+                        <input type="search" placeholder="Search" ng-model="searchDevice" class="form-control"/>
+                    </div>
+                </div>
+                <accordion close-others="oneAtATime" >
+                    <accordion-group heading="{{d.device.name}}" ng-repeat="d in deviceList |filter:searchDevice" is-open="status.open">
+                        <accordion-heading>
+
+                            {{d.device.Name}} <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-up': status.open, 'glyphicon-chevron-down': !status.open}"></i> -->
+                                           <!-- <i class="pull-right glyphicon glyphicon-ok"></i>-->
+                            <!-- <span class="pull-right availabilitySpan notAvailable" ng-show="!d.returned"> Not available </span>
+                            <span class="pull-right availabilitySpan available" ng-show="d.returned"> Available </span>
+                        </accordion-heading>
+                        <label>Operating Sistem</label>
+                        <p>{{d.device.OperatingSystem}}</p>
+                        <label>Owner</label>
+                        <p>{{d.device.Owner}}</p>
+                        <label>Others</label>
+                        <p>{{d.device.Others}}</p>
+                        <button class="btn btn-default pull-right" ng-show="!d.returned" ng-click="returnDevice(d.device.DeviceId)" ng-class="{noDisplay: !data.admin}">Return</button>
+                        <button class="btn btn-default pull-right" ng-click="editDevice(d.device)">Edit</button>
+                        <button class="btn btn-default pull-right" ng-click="deleteDevice(d.device.DeviceId)">Delete</button>
+                    </accordion-group>
+
+                </accordion>
+                                -->
+
+                <!-- <button class="btn btn-default pull-right" ng-click="openAddDeviceModal(null)" ng-class="{noDisplay: !data.admin}">Add device</button>
+            </div>
+
+            <div class="panel" ng-show="isSelected(2)" ng-class="{noDisplay: !data.admin}">
+                <div class="row bar">
+                    <div class="col-md-4">
+                        <label>See hours</label>
+                        <input type="checkbox"  ng-model="seeHours" >
+                    </div>
+                    <div class="col-md-4 pull-right searchBar">
+                        <input type="search" placeholder="Search" ng-model="search" class="form-control"/>
+                    </div>
+                </div>
+
+
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>
+                                <a ng-click="orderByField='device.Name';reverseSort = !reverseSort;"> Device
+                                    <span ng-show="orderByField=='device.Name'">
+                                        <img src="resources/img/keyboard-arrow-up2.png" ng-show="!reverseSort" >
+                                        <img src="resources/img/keyboard-arrow-down.png" ng-show="reverseSort" >
+                                    </img>
+                                </a>
+                            </th>
+                            <th>
+                                <a ng-click="orderByField='person.DisplayName';reverseSort = !reverseSort;"> Person
+                                    <span ng-show="orderByField=='person.DisplayName'">
+                                        <img src="resources/img/keyboard-arrow-up2.png" ng-show="!reverseSort" >
+                                        <img src="resources/img/keyboard-arrow-down.png" ng-show="reverseSort" >
+                                    </img>
+                                </a>
+                            </th>
+                            <th>
+                                <a ng-click="orderByField='td';reverseSort = !reverseSort;"> Booked Date
+                                    <span ng-show="orderByField=='td'">
+                                        <img src="resources/img/keyboard-arrow-up2.png" ng-show="!reverseSort">
+                                        <img src="resources/img/keyboard-arrow-down.png" ng-show="reverseSort">
+                                    </img>
+                                </a>
+
+                            </th>
+                            <th ng-show="seeHours">
+                                <a ng-click="orderByField='th';reverseSort = !reverseSort;"> Booked Hour
+                                    <span ng-show="orderByField=='th'">
+                                        <img src="resources/img/keyboard-arrow-up2.png" ng-show="!reverseSort">
+                                        <img src="resources/img/keyboard-arrow-down.png" ng-show="reverseSort">
+                                    </img>
+                                </a>
+                            </th>
+                            <th>
+                                <a ng-click="orderByField='rd';reverseSort = !reverseSort;"> Return Date
+                                    <span ng-show="orderByField=='rd'">
+                                        <img src="resources/img/keyboard-arrow-up2.png" ng-show="!reverseSort">
+                                        <img src="resources/img/keyboard-arrow-down.png" ng-show="reverseSort">
+                                    </img>
+                                </a>
+                            </th>
+                            <th ng-show="seeHours">
+                                <a ng-click="orderByField='rh';reverseSort = !reverseSort;"> Return Hour
+                                    <span ng-show="orderByField=='rh'">
+                                        <img src="resources/img/keyboard-arrow-up2.png" ng-show="!reverseSort">
+                                        <img src="resources/img/keyboard-arrow-down.png" ng-show="reverseSort">
+                                    </img>
+                                </a>
+                             </th>
+                            <th>
+                                 <a ng-click="orderByField='cable';reverseSort = !reverseSort;"> Cable
+                                    <span ng-show="orderByField=='cable'">
+                                        <img src="resources/img/keyboard-arrow-up2.png" ng-show="!reverseSort">
+                                        <img src="resources/img/keyboard-arrow-down.png" ng-show="reverseSort">
+                                    </img>
+                                </a>
+                             </th>
+                            <th> -->
+                                <!-- <a ng-click="orderByField='returned';reverseSort = !reverseSort;"> Returned
+                                    <span ng-show="orderByField=='returned'">
+                                        <img src="resources/img/keyboard-arrow-up2.png" ng-show="!reverseSort">
+                                        <img src="resources/img/keyboard-arrow-down.png" ng-show="reverseSort">
+                                    </img>
+                                </a>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="alert in alertList track by $index" class="notAvailable">
+                            <td>{{alert.device.Name}}</td>
+                            <td>{{alert.person.DisplayName}}</td>
+                            <td>{{alert.td}}</td>
+                            <td ng-show="seeHours">{{alert.th}}</td>
+                            <td>{{alert.rd}}</td>
+                            <td ng-show="seeHours">{{alert.rh}}</td>
+                            <td>{{alert.cable}}</td>
+                            <td>{{alert.returned}}</td>
+                        </tr>
+                        <tr ng-repeat="log in logList| orderBy : orderByField : reverseSort |filter:search | filter:filterAlerts">
+                            <td>{{log.device.Name}}</td>
+                            <td>{{log.person.DisplayName}}</td>
+                            <td>{{log.td}}</td>
+                            <td ng-show="seeHours">{{log.th}}</td>
+                            <td>{{log.rd}}</td>
+                            <td ng-show="seeHours">{{log.rh}}</td>
+                            <td>{{log.cable}}</td>
+                            <td>{{log.returned}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </section>
+    </div>
+
+</div> -->

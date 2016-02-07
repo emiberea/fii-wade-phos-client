@@ -1,0 +1,36 @@
+
+<div class="modal-header">
+    <h3 class="modal-title">Device data</h3>
+</div>
+<div class="modal-body">
+                        
+    <form role="form">
+        <div class="form-group">
+            <!--<label for="name">Name</label>-->
+            <input type="text" class="form-control" id="name" placeholder="Device Name *" ng-model="deviceName" ng-class="{deviceError: errorDevice}"/>
+        </div>
+        <div class="form-group">
+            <!--<label for="operatingSystem">Operating System</label>-->
+            <input type="text" class="form-control" id="operatingSystem" placeholder="Operating System" ng-model="deviceOS"/>
+        </div>
+        <div class="form-group">
+            <!--<label for="owner">Owner</label>-->
+            <input type="text" class="form-control" id="owner" placeholder="Owner" ng-model="deviceOwner"/>
+        </div>
+        <div class="form-group">
+            <!--<label for="others">Others</label>-->
+            <input type="text" class="form-control" id="others" placeholder="Others" ng-model="deviceOthers"/>
+        </div>                          
+    </form>
+
+    <h6 ng-show="errorDevice" ng-class="{deviceErrorMessage: errorDevice}">Please fill in the Name of the device</h6>
+    <!--"-->
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="save()" >
+        <span ng-show="!newDevice">Save</span>
+        <span ng-show="newDevice">Add</span>
+    </button>
+
+    <button class="btn btn-warning" ng-click="cancelDeviceModal()">Cancel</button>
+</div>

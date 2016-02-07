@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html ng-app="DeviceManager">
+    <head >
+        <meta charset="utf-8" />
+        <title>Angular project</title>
+         <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>
+        <script src="js/main.min.js"></script>      
+        
+        <link href="resources/css/style.min.css" rel="stylesheet">
+    </head>
+    
+
+    <body>        
+         <div class="container" >
+            <div id="loadingDiv" class="spinnerDiv" style="display: none;"></div>
+            <div class="header">
+                <div class="row custom_header" ng-controller="loginController">
+                    <div class="col-md-4">
+                        <img src="resources/img/centric_logo_x2.png" alt="Centric" class="logo"/> 
+                    </div>
+
+                    <button class="logoutBtn" ng-show="data.logged" ng-click="loggout()"><span class="glyphicon glyphicon-off"></span></button>
+                </div>
+                <img src="resources/img/header.png" alt="" class="greenbar"/>  
+            </div>
+       
+            <div ui-view></div>
+        
+
+            <div class="footer">
+                
+                <img src="resources/img/header.png" alt="" class="greenbar"/>
+                
+            </div>
+
+        </div>
+
+               
+    </body>
+       
+</html>
+ 
