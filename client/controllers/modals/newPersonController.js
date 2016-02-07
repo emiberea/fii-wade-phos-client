@@ -3,6 +3,9 @@ app.controller("newPersonController", function ($rootScope, $scope, $http, $moda
     $scope.errorDevice = false;
     $scope.newPerson = items.newPerson;
 
+    $scope.personPhobias = [];
+    $scope.personsPhobiaLabels = [];
+
     $scope.savePerson = function () {
         console.log(items);
         if (items.newPerson) {
@@ -10,6 +13,11 @@ app.controller("newPersonController", function ($rootScope, $scope, $http, $moda
         } else {
           //  $scope.editDevice();
         }
+    }
+
+    $scope.addPhobiaToPerson = function(phobia){
+      $scope.personPhobias.push(phobia.phobia);
+      $scope.personsPhobiaLabels.push(phobia.label);
     }
 
 

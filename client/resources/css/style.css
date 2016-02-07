@@ -81,47 +81,6 @@ body{
     margin-bottom: 10px;
 }
 
-.availabilityDevice{
-    height:17px;
-    margin-top: -4px;
-}
-
-.availabilitySpan{
-    font-size: 15px;
-    margin-right: 10px;
-}
-
-.available{
-    color:#18A86E
-}
-
-.notAvailable{
-    color:#F05B5B
-}
-
-table a, a:hover {
-    color:#000;
-    text-decoration:none;
-}
-
-.disabledDate {
-    background-color: white !important;
-}
-
-.noDisplay{
-    display:none !important;
-}
-
-.logoutBtn{
-    background-color: white;
-    border: 0;
-    color:#c81f1f;
-    right: 10px;
-
-    position: absolute;
-    bottom: 0;
-}
-
 .custom_header{
     position:relative;
 }
@@ -148,4 +107,9 @@ table a, a:hover {
 
 .buttonSpace a{
   margin:0 20px;
+}
+
+.infoPhobia{
+  border-bottom: 1px solid #bababa;
+  margin-top: 10px;
 }

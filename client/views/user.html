@@ -27,3 +27,11 @@
     </form>
   </div>
 </div>
+
+
+
+<div class="row infoPhobia" ng-repeat="p in userPhobiasInfo">
+  <h3>{{p.label}}</h3>
+  <p>{{p.info}}</p>
+  <p> For more information click <a ng-href="{{p.link}}" target="_blank">here</a> </p>
+</div>
