@@ -13,18 +13,21 @@
     <a><span class="glyphicon glyphicon-trash"></span></a>
   </div>
 </div> -->
-<h3 ng-if="remedies.length> 0 ">Remedies </h3>
-<div class="row" ng-repeat="remedy in remedies">
-  <h4><b>{{remedy.label}}</b><h4>
-  <ul ng-repeat="description in remedy.descriptions">
-    <li>{{description}}</li>
-  </ul>
-</div>
+<div itemscope itemtype="http://schema.org/MedicalCondition">
+  <h3 ng-if="remedies.length> 0 ">Remedies </h3>
+  <div class="row" ng-repeat="remedy in remedies">
+    <h4><b><span itemprop="name">{{remedy.label}}</span></b><h4>
+    <ul ng-repeat="description in remedy.descriptions">
+      <li><span itemprop="secondaryPrevention">{{description}}</span></li>
+    </ul>
+  </div>
 
-<h3 ng-if="symptoms.length> 0 ">Symptoms </h3>
-<div class="row" ng-repeat="s in symptoms">
-  <h4><b>{{s.label}}</b><h4>
-  <ul ng-repeat="description in s.descriptions">
-    <li>{{description}}</li>
-  </ul>
+
+  <h3 ng-if="symptoms.length> 0 ">Symptoms </h3>
+  <div class="row" ng-repeat="s in symptoms">
+    <h4><b><span itemprop="name">{{s.label}}</span></b><h4>
+    <ul ng-repeat="description in s.descriptions">
+      <li><span itemprop="signOrSymptom">{{description}}</span></li>
+    </ul>
+  </div>
 </div>
