@@ -35,24 +35,18 @@ app.controller("newPersonController", function ($rootScope, $scope, $http, $moda
             "phobias":  $scope.personPhobias
           }
       }).success(function (data) {
-        console.log(data);
+        // console.log(data);
         var newPerson = data.data;
-        console.log($rootScope.currentUser.persons);
-        if($rootScope.currentUser.persons){
-          $rootScope.currentUser.persons.push(newPerson);
-        }else{
-          $rootScope.currentUser.persons = newPerson;
-        }
-        console.log($rootScope.currentUser.persons);
-        localStorage.setItem("loggedUser", angular.toJson($rootScope.currentUser))
+        $rootScope.currentPersons.push(newPerson);
+        localStorage.setItem("currentPersons", angular.toJson($rootScope.currentPersons));
         loading.hide();
         $scope.cancelPersonModal();
       }).error(function(data){
-        console.log(data);
+        // console.log(data);
         loading.hide();
       });
     }
-    
+
     $scope.cancelPersonModal = function () {
         $modalInstance.dismiss();
     }
