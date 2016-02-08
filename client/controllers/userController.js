@@ -1,6 +1,6 @@
 app.controller("userController", function ($scope, $http, $rootScope, $modal, dalService) {
   $rootScope.data.logged = localStorage.getItem("logged");
-  if($rootScope.data.logged){    
+  if($rootScope.data.logged){
     $rootScope.currentPersons = angular.fromJson(localStorage.getItem("currentPersons"));
     $rootScope.currentUser = angular.fromJson(localStorage.getItem("loggedUser"));
   }
@@ -9,23 +9,22 @@ app.controller("userController", function ($scope, $http, $rootScope, $modal, da
   $scope.userPhobiasInfo = [];
 
   $scope.getPhobiaLabels = function(){
-    var ids = $rootScope.currentUser.phobias;
+    var phobias = $rootScope.currentUser.phobias;
 
-    for(var i =0 ; i<ids.length; i++){
-      var split = ids[i].split("#");
-      var label = split[1].replace("_", " ");
-      $scope.phobiaLabels.push(label);
+    for(var i =0 ; i<phobias.length; i++){
+      // var split = phobias[i].label.split("#");
+      // var label = split[1].replace("_", " ");
+      $scope.phobiaLabels.push(phobias[i].label);
 
     }
   }
 
   $scope.getPhobiasInfo = function(){
-    var ids = $rootScope.currentUser.phobias;
-console.log(ids);
-    for(var i=0; i<ids.length; i++){
+    var phobias = $rootScope.currentUser.phobias;
+    for(var i=0; i<phobias.length; i++){
 
-  console.log(ids[i]);
-      getPhobiaById(ids[i]);
+      console.log(phobias[i].id);
+      getPhobiaById(phobias[i].id);
     }
   };
 
@@ -33,7 +32,7 @@ console.log(ids);
     var phobias = angular.fromJson(localStorage.getItem("phobias"));
 
     for(var i=0; i<phobias.length; i++){
-      console.log(phobias[i].phobia);
+    //  console.log(phobias[i].phobia);
       if(phobias[i].phobia == id){
         $scope.userPhobiasInfo.push(phobias[i]);
 
@@ -43,7 +42,7 @@ console.log(ids);
     }
   }
 
-  $scope.getPhobiaLabels();
+//  $scope.getPhobiaLabels();
   $scope.getPhobiasInfo();
 
 });
