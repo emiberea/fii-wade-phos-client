@@ -4,9 +4,13 @@
   <a class="pull-right" ng-click="newPersonModal()"><span class="glyphicon glyphicon-plus"></span></a>
 </div>
 
-<div class="row">
-  <div class="col-md-8">Something here about the activitie so we can map. Something here about the activitie so we can map. Something here about the activitie so we can map.
-  Something here about the activitie so we can map. Something here about the activitie so we can map. Something here about the activitie so we can map</div>
+<div class="row" ng-repeat="person in currentPersons" style="font-size:18px;margin-bottom:10px;">
+  <div class="col-md-8" >
+    <p><b>{{person.name}}</b></p>
+    <!-- <div ng-repeat="phobia in person.phobias" style="margin-right:20px;">
+      {{phobia.label}}
+    </div> -->
+  </div>
   <div class="col-md-4 buttonSpace" >
     <a ng-click="sugestionModal.show()"><span class="glyphicon glyphicon-info-sign"></span></a>
     <a><span class="glyphicon glyphicon-pencil"></span></a>

@@ -4,7 +4,7 @@
   <a class="pull-right" ng-click="newActivityModal()"><span class="glyphicon glyphicon-plus"></span></a>
 </div>
 
-<div class="row">
+<!-- <div class="row">
   <div class="col-md-8">Something here about the activitie so we can map. Something here about the activitie so we can map. Something here about the activitie so we can map.
   Something here about the activitie so we can map. Something here about the activitie so we can map. Something here about the activitie so we can map</div>
   <div class="col-md-4 buttonSpace" >
@@ -12,4 +12,19 @@
     <a><span class="glyphicon glyphicon-pencil"></span></a>
     <a><span class="glyphicon glyphicon-trash"></span></a>
   </div>
+</div> -->
+<h3 ng-if="remedies.length> 0 ">Remedies </h3>
+<div class="row" ng-repeat="remedy in remedies">
+  <h4><b>{{remedy.label}}</b><h4>
+  <ul ng-repeat="description in remedy.descriptions">
+    <li>{{description}}</li>
+  </ul>
+</div>
+
+<h3 ng-if="symptoms.length> 0 ">Symptoms </h3>
+<div class="row" ng-repeat="s in symptoms">
+  <h4><b>{{s.label}}</b><h4>
+  <ul ng-repeat="description in s.descriptions">
+    <li>{{description}}</li>
+  </ul>
 </div>

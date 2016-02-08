@@ -1,0 +1,310 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "<PhoS>"
+    },
+    "schemes": [
+        "http"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/login": {
+            "post": {
+                "description": "Login into the app",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "Users email",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "description": "Users password",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful authentification"
+                    },
+                    "400": {
+                        "description": "Bad request, JSON data is malformed"
+                    },
+                    "401": {
+                        "description": "Authentication failed."
+                    }
+                }
+            }
+        },
+        "/users": {
+            "get": {
+                "description": "Gets `Users` objects.",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "The user with the specified id",
+                        "required": true,
+                        "type": "number",
+                        "format": "long"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "schema": {
+                            "title": "user",
+                            "type": "object",
+                            "items": {
+                                "title": "User",
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "phobias": {
+                                        "type": "array"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "User not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            },
+            "post": {
+                "description": "Adds a new `User` object",
+                "responses": {
+                    "201": {
+                        "description": "User is created",
+                        "schema": {
+                            "title": "email",
+                            "type": "string"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict. There is already one user with the same email"
+                    },
+                    "500": {
+                        "description": "Server error, User not created"
+                    }
+                }
+            },
+            "put": {
+                "description": "Update an `User` object",
+                "responses": {
+                    "200": {
+                        "description": "User successfully updated"
+                    },
+                    "400": {
+                        "description": "Bad request, JSON data is malformed"
+                    },
+                    "404": {
+                        "description": "User not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/phobias": {
+            "get": {
+                "description": "Gets all the `Phobia` objects",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "The phobia at the specified id",
+                        "required": false,
+                        "type": "number",
+                        "format": "long"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "schema": {
+                            "title": "Phobias",
+                            "type": "array",
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                },
+                                "alternateName": {
+                                    "type": "string"
+                                },
+                                "description": {
+                                    "type": "string"
+                                },
+                                "cause": {
+                                    "type": "string"
+                                },
+                                "gender": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/phobias/user": {
+            "get": {
+                "description": "Get all the `Phobia` objects attached to a user",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "usersId",
+                        "required": true,
+                        "type": "number",
+                        "format": "long"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "schema": {
+                            "title": "UserPhobias",
+                            "type": "array"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Attach a new `Phobia` to a `User`",
+                "responses": {
+                    "201": {
+                        "description": "Phobia successfully added to User",
+                        "schema": {
+                            "title": "UserPhobias",
+                            "type": "array"
+                        }
+                    }
+                }
+            }
+        },
+        "/persons/user": {
+            "get": {
+                "description": "Gets an array of `Person` of the given `User` id",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "usersId",
+                        "required": true,
+                        "type": "number",
+                        "format": "long"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "schema": {
+                            "title": "UserPhobias",
+                            "type": "array",
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                },
+                                "familyName": {
+                                    "type": "string"
+                                },
+                                "birthDate": {
+                                    "type": "string"
+                                },
+                                "email": {
+                                    "type": "string"
+                                },
+                                "gender": {
+                                    "type": "string"
+                                },
+                                "phobias": {
+                                    "type": "array"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Add a `Person` to a `User`",
+                "responses": {
+                    "201": {
+                        "description": "Person successfully added to User",
+                        "schema": {
+                            "title": "UserPersons",
+                            "type": "array"
+                        }
+                    }
+                }
+            }
+        },
+        "/activity/user": {
+            "get": {
+                "description": "Get all `Activity` objects from a `User`",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "usersId",
+                        "required": true,
+                        "type": "number",
+                        "format": "long"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "schema": {
+                            "title": "UserActivities",
+                            "type": "array",
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                },
+                                "location": {
+                                    "type": "string"
+                                },
+                                "description": {
+                                    "type": "string"
+                                },
+                                "persons": {
+                                    "type": "array"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Add a new `Activity` object to a `User`",
+                "responses": {
+                    "201": {
+                        "description": "Activity successfully added to User",
+                        "schema": {
+                            "title": "UserActivities",
+                            "type": "array"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

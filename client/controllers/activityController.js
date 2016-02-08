@@ -2,29 +2,30 @@ app.controller("activityController", function ($scope, $http, $rootScope, $modal
 
   $rootScope.data.logged = localStorage.getItem("logged");
   if($rootScope.data.logged){
-
     $rootScope.currentUser = angular.fromJson(localStorage.getItem("loggedUser"));
+    $rootScope.currentPersons = angular.fromJson(localStorage.getItem("currentPersons"));
   }
-  $scope.newActivityModal = function (device) {
+
+  $scope.newActivityModal = function (activity) {
         var info;
 
-        if (device == null) {
+        if (activity == null) {
             info = {
-                newDevice: true,
-                deviceId: null
+                newActivity: true,
+                activityId: null
             }
             $rootScope.name = undefined;
             $rootScope.description = undefined;
 
         } else {
             info = {
-                newDevice: false,
-                deviceId: device.DeviceId
+                newActivity: false,
+                activityId: activityId.id
             }
         }
 
         var modalInstance = $modal.open({
-            templateUrl: '../views/modals/activityModal.html',
+            templateUrl: '../views/modals/newActivityModal.html',
             controller: 'newActivityController',
             //size: "sm",
             backdrop: 'static',
@@ -35,4 +36,5 @@ app.controller("activityController", function ($scope, $http, $rootScope, $modal
             }
         });
     };
+
 });

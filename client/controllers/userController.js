@@ -1,7 +1,7 @@
 app.controller("userController", function ($scope, $http, $rootScope, $modal, dalService) {
   $rootScope.data.logged = localStorage.getItem("logged");
-  if($rootScope.data.logged){
-
+  if($rootScope.data.logged){    
+    $rootScope.currentPersons = angular.fromJson(localStorage.getItem("currentPersons"));
     $rootScope.currentUser = angular.fromJson(localStorage.getItem("loggedUser"));
   }
 
