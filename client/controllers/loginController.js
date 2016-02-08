@@ -38,6 +38,21 @@
               }).error(function(data){
 
               });
+
+              $http({
+                  method: "GET",
+                  url: settings.BASE_API_URL + "persons/" + $scope.email
+              }).success(function(data){
+                console.log(data);
+                if(data.data){
+                  $rootScope.currentPersons = data.data
+                  localStorage.setItem("currentPersons", angular.toJson($rootScope.currentPersons));
+                }
+
+
+              }).error(function(data){
+
+              });
             }
         }).error(function (data) {
             loading.hide();
@@ -128,15 +143,11 @@
   }
 
   $scope.addPhobiaToNewUser = function(phobia){
-    console.log(phobia);
     $scope.newUserPhobias.push(phobia.phobia);
     $scope.newUserPhobiaLabels.push(phobia.label);
-    console.log($scope.newUserPhobias);
-    console.log($scope.newUserPhobiaLabels);
   }
 
   $scope.removePhobiaFromNewUser = function(index){
-    console.log(index);
     $scope.newUserPhobias.splice(index, 1);
     $scope.newUserPhobiaLabels.splice(index, 1);
   }

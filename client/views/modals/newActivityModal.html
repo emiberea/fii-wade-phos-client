@@ -1,6 +1,6 @@
 ﻿
 <div class="modal-header">
-    <h3 class="modal-title">New Aceqeqweqtivity</h3>
+    <h3 class="modal-title">New Activity</h3>
 </div>
 <div class="modal-body">
 
@@ -12,19 +12,23 @@
             <input type="textarea" class="form-control" id="owner" placeholder="Short description" ng-model="description"/>
         </div>
     </form>
-rrrr
+
     <select type="text"
         class="form-control selectButtonRow"
         ng-model="personActivity"
         ng-options="person.name for person in currentPersons | orderBy:'person.name'" >
-        <option value="">-Choose Phobias-</option> -->
+        <option value="">-Choose Persons-</option> -->
         <option ng-repeat="person in currentPersons | orderBy:'phobia.label'" ng-model="personActivity" value="person.name">{{phobia.label}}</option>
     </select>
-
+    <a ng-click="addPersonToActivity(personActivity)" class="phobiaAddBtn"><span class="glyphicon glyphicon-ok"></span></a>
+    <div class="row" style="margin-top:20px;" ng-repeat="person in activityPersons">
+      <label style="display:inline; width:90%;margin-left:20px;">{{person.name}}</label>
+      <a ng-click="removePersonFromActivity($index)" class="phobiaAddBtn" style="margin-right:10px;"><span class="glyphicon glyphicon-remove"></span></a>
+    </div>
 </div>
 <div class="modal-footer">
     <button class="btn btn-primary" ng-click="saveActivity()" >
-        <span ng-show="!newActivity">Run</span>
+        <span ng-show="!newActivity">Save</span>
         <span ng-show="newActivity">Add</span>
     </button>
 

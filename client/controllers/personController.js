@@ -3,6 +3,7 @@ app.controller("personController", function ($scope, $http, $rootScope, $modal, 
   if($rootScope.data.logged){
 
     $rootScope.currentUser = angular.fromJson(localStorage.getItem("loggedUser"));
+    $rootScope.currentPersons = angular.fromJson(localStorage.getItem("currentPersons"));
   }
   $scope.newPersonModal = function (person) {
         var info;
@@ -17,7 +18,7 @@ app.controller("personController", function ($scope, $http, $rootScope, $modal, 
         } else {
             info = {
                 newPerson: false,
-                personId: person.DeviceId
+                personId: person.id
             }
         }
 

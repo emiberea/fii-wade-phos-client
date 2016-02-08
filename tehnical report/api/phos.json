@@ -1,0 +1,312 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "<PhoS>"
+    },
+    "schemes": [
+        "http"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/login": {
+            "post": {
+                "description": "Login into the app",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "Users email",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "description": "Users password",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful authentification"
+                    },
+                    "400": {
+                        "description": "Bad request, JSON data is malformed"
+                    },
+                    "401": {
+                        "description": "Authentication failed."
+                    }
+                }
+            }
+        },
+        "/users": {
+            "get": {
+                "description": "Gets `Users` objects.",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "The user with the specified id",
+                        "required": true,
+                        "type": "number",
+                        "format": "long"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "schema": {
+                            "title": "user",
+                            "type": "object",
+                            "items": {
+                                "title": "User",
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "phobias": {
+                                        "type": "array"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "User not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            },
+            "post": {
+                "description": "Adds a new `User` object",
+                "responses": {
+                    "201": {
+                        "description": "User is created",
+                        "schema": {
+                            "title": "email",
+                            "type": "string"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict. There is already one user with the same email"
+                    },
+                    "500": {
+                        "description": "Server error, User not created"
+                    }
+                }
+            },
+            "put": {
+                "description": "Update an `User` object",
+                "responses": {
+                    "200": {
+                        "description": "User successfully updated"
+                    },
+                    "400": {
+                        "description": "Bad request, JSON data is malformed"
+                    },
+                    "404": {
+                        "description": "User not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/phobias": {
+            "get": {
+                "description": "Gets all the `Phobia` objects",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "The phobia at the specified id",
+                        "required": false,
+                        "type": "number",
+                        "format": "long"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "schema": {
+                            "title": "Phobias",
+                            "type": "array",
+                            "items": {
+                                "properties": {
+                                    "phobia": {
+                                        "type": "string"
+                                    },
+                                    "label": {
+                                        "type": "string"
+                                    },
+                                    "info": {
+                                        "type": "string"
+                                    },
+                                    "link": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        },
+        "/persons/email": {
+            "get": {
+                "description": "Gets an array of `Person` of the given `User` id",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "users email",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "schema": {
+                            "title": "UserPhobias",
+                            "type": "array",
+                            "items": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "phobias": {
+                                        "type": "array"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
+            },
+            "post": {
+                "description": "Add a `Person` to a `User`",
+                "responses": {
+                    "201": {
+                        "description": "Person successfully added to User",
+                        "schema": {
+                            "title": "UserPersons",
+                            "type": "array"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request, JSON data is malformed"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/remedies": {
+            "post": {
+                "description": "Get `Remedies` for a combination of activities and phobias",
+                "parameters": [
+                    {
+                        "name": "phobia",
+                        "in": "query",
+                        "description": "phobias id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "activity",
+                        "in": "query",
+                        "description": "an activity",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "schema": {
+                            "title": "remedies",
+                            "type": "array",
+                            "items": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "location": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    },
+                                    "persons": {
+                                        "type": "array"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request, JSON data is malformed"
+                    },
+                    "500": {
+                        "description": "Server error"
+                    }
+                }
+            }
+        },
+        "/symptoms/phobia": {
+            "get": {
+                "description": "Get a list of symptoms for the specified phobia",
+                "parameters": [
+                    {
+                        "name": "phobia",
+                        "in": "query",
+                        "description": "phobias",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "schema": {
+                            "title": "remedies",
+                            "type": "array",
+                            "items": {
+                                "properties": {
+                                    "label": {
+                                        "type": "string"
+                                    },
+                                    "phobia": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server error"
+                    }
+                }
+            }
+        }
+    }
+}
