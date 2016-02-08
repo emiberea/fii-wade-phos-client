@@ -101,71 +101,43 @@ paths:
           schema:
             title: Phobias
             type: array
-            properties:
-                name:
+            items:
+              properties:
+                phobia:
                   type: string
-                alternateName: 
+                label: 
                   type: string
-                description:
+                info:
                   type: string
-                cause:
+                link:
                   type: string
-                gender:
-                  type: string
-  /phobias/user:
-    get:
-      description: Get all the `Phobia` objects attached to a user
-      parameters:
-        - name: id
-          in: query
-          description: usersId
-          required: true
-          type: number
-          format: long
-      responses:
-        '200': 
-          description: Successful response
-          schema:
-            title: UserPhobias
-            type: array
-    post: 
-      description: Attach a new `Phobia` to a `User`
-      responses: 
-        '201':
-          description: Phobia successfully added to User
-          schema:
-            title: UserPhobias
-            type: array
-    
-  /persons/user:
+        '404': 
+          description: Not found
+  
+  /persons/email:
     get: 
       description: Gets an array of `Person` of the given `User` id
       parameters:
-        - name: id
+        - name: email
           in: query
-          description: usersId
+          description: users email
           required: true
-          type: number
-          format: long
+          type: string
       responses:
         '200': 
           description: Successful response
           schema:
             title: UserPhobias
             type: array
-            properties:
+            items:
+              properties:
                 name:
-                  type: string
-                familyName:
-                  type: string
-                birthDate:
-                  type: string
-                email: 
-                  type: string
-                gender:
                   type: string
                 phobias: 
                   type: array
+        '404':
+          description: User not found
+        
     post:
       description: Add a `Person` to a `User`
       responses: 
@@ -173,26 +145,34 @@ paths:
           description: Person successfully added to User
           schema:
             title: UserPersons
-            type: array     
-      
-            
-  /activity/user:
-    get:
-      description: Get all `Activity` objects from a `User`
+            type: array    
+        '400':
+          description: Bad request, JSON data is malformed    
+        '500':
+          description: Internal server error
+          
+  /remedies:
+    post:
+      description: Get `Remedies` for a combination of activities and phobias
       parameters:
-        - name: id
+        - name: phobia
           in: query
-          description: usersId
+          description: phobias id
           required: true
-          type: number
-          format: long
+          type: string
+        - name: activity
+          in: query
+          description: an activity
+          required: true
+          type: string
       responses:
         '200': 
           description: Successful response
           schema:
-            title: UserActivities
+            title: remedies
             type: array
-            properties:
+            items:
+              properties:
                 name:
                   type: string
                 location:
@@ -201,14 +181,35 @@ paths:
                   type: string
                 persons:
                   type: array
-    post: 
-      description: Add a new `Activity` object to a `User`
-      responses: 
-        '201':
-          description: Activity successfully added to User
+        '400':
+          description: Bad request, JSON data is malformed
+        '500':
+          description: Server error
+  
+  /symptoms/phobia:
+    get:
+      description: Get a list of symptoms for the specified phobia
+      parameters:
+        - name: phobia
+          in: query
+          description: phobias
+          required: true
+          type: string
+      responses:
+        '200': 
+          description: Successful response
           schema:
-            title: UserActivities
-            type: array   
+            title: remedies
+            type: array
+            items:
+              properties:
+                label:
+                  type: string
+                phobia:
+                  type: string
+        '500':
+          description: Server error
+
       
             
             
