@@ -101,13 +101,16 @@ app.controller("newActivityController", function ($rootScope, $scope, $http, $mo
     var phobias = [],
         user = $rootScope.currentUser,
         persons = $scope.activityPersons;
+    console.log(persons)
     for(var i =0; i<user.phobias.length; i++){
       if(phobias.indexOf(user.phobias[i].id) ==-1)
         phobias.push(user.phobias[i].id);
     }
 
     for(var j=0; j<persons.length; j++){
+      console.log(persons[j])
       for(var k=0; k<persons[j].phobias.length; k++){
+        console.log(persons[j].phobias)
         if(phobias.indexOf(persons[j].phobias[k].id) ==-1)
           phobias.push(persons[j].phobias[k].id);
       }
@@ -154,14 +157,16 @@ app.controller("newActivityController", function ($rootScope, $scope, $http, $mo
       loading.hide();
       $scope.cancelActivityModal();
     }).error(function(data){
-      alert("An error has occured");
+     // alert("An error has occured");
       loading.hide();
     });
   };
 
   function getSymptoms(phobia){
-    console.log(phobia);
-    var label = phobia.split("#")[1];
+   if(phobia){
+
+     var label = phobia.split("#")[1];
+   }
     $http({
         method: "GET",
         url: settings.BASE_API_URL + "symptoms/" + label ,

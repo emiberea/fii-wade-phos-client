@@ -36,7 +36,18 @@ app.controller("newPersonController", function ($rootScope, $scope, $http, $moda
           }
       }).success(function (data) {
         // console.log(data);
-        var newPerson = data.data;
+        var newPerson = data.data,
+            newPhobiaArray = [];
+          for(var i=0; i<newPerson.phobias.length; i++){
+              //a =;
+              //b = (a);
+              newPhobiaArray.push({
+                  'label':  newPerson.phobias[i].split("#")[1],
+                  'id': newPerson.phobias[i]
+              });
+          }
+
+        newPerson.phobias = newPhobiaArray;
         $rootScope.currentPersons.push(newPerson);
         localStorage.setItem("currentPersons", angular.toJson($rootScope.currentPersons));
         loading.hide();
