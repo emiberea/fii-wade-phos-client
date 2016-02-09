@@ -146,31 +146,18 @@
 				</li>
 			</ul>
 			<h4>Concepts - schema.org</h4>
-			Bellow are the concepts that we are going to use in the application.
+			Bellow are the concepts that end up using in our application
 
 			<ul>
 				<li>Person - <a href="https://schema.org/Person" target="_blank">https://schema.org/Person </a>
 					<ul>
 						<li>name</li>
-						<li>familyName</li>
-						<li>gender</li>
-						<li>birthDate</li>
 						<li>email</li>
+						<li>nickName</li>						
 						<li>knows</li>
 					</ul>
 				</li>
-
-				<li>Event -<a href="https://schema.org/Event" target="_blank"> https://schema.org/Event </a>
-					<ul>
-						<li>attendee</li>
-						<li>inLanguage</li>
-						<li>location</li>
-						<li>organizer</li>
-						<li>review - may be used for suggestions</li>
-						<li>description</li>
-						<li>name</li>
-					</ul>
-				</li>
+				
 				<li>MedicalCondition -<a href="https://schema.org/MedicalCondition" target="_blank"> https://schema.org/MedicalCondition </a>
 					<ul>
 						<li>cause</li>
@@ -183,77 +170,50 @@
 						<li>url</li>
 					</ul>
 				</li>
-				<li>PhysicalActivity - <a href="https://schema.org/PhysicalActivity" target="_blank">https://schema.org/PhysicalActivity</a>
-					<ul>
-						<li>pathophysiology</li>
-						<li>adversoutcome</li>
-						<li>contraindication</li>
-						<li>indication</li>
-						<li>description</li>
-						<li>name</li>
-					</ul>
-				</li>
-				<li>Drug -<a href="https://schema.org/Drug" target="_blank"> https://schema.org/Drug</a>
-					<ul>
-						<li>administrationRate</li>
-						<li>alcoholWarning</li>
-						<li>breastfeedingWarning</li>
-						<li>dosageForm</li>
-						<li>doseSchedule</li>
-						<li>foodWarning</li>
-						<li>labelDetails</li>
-						<li>overdosage</li>
-						<li>relatedDrugs</li>
-						<li>prescribingInfo</li>
-						<li>warning</li>
-						<li>alternateName</li>
-						<li>description</li>
-						<li>image</li>
-						<li>name</li>
-						<li>url</li>
-					</ul>
-				</li>
 			</ul>
 		</section>
 
 		<section>
 			<h3>6. Ontology</h3>
-			<ul>
-				<li>For this project we developed our custom ontology, and we modeled the relations between the persons, phobias, activities, remedies and symptoms.
-					<p>We have the following classes:</p>
-					<ul>
-						<li>Person</li>
-						<li>Phobia</li>
-						<li>Activity</li>
-						<li>Remedy</li>
-						<li>Symptom</li>
-					</ul>
-					<p>We have created the following DatatypeProperty:</p>
-					<ul>
-						<li>description</li>
-						<li>symptomName</li>
-						<li>appearsFor</li>
-						<li>forActivity</li>
-						<li>hasPhobia</li>
-					</ul>
-					<img src="printscreens/DatatypeProperty.png" alt="DatatypeProperty" height="110px">
-					<p>And we added the following ObjectProperty:</p>
-					<ul>
-						<li>
-							<p>forPhobia</p>
-							<img src="printscreens/ObjectProperty.png" alt="ObjectProperty" height="90px">
-						</li>
-					</ul>
-				</li>
-				<li>
-					We did research on various phobias, and review which are the possible remedies, and we make a list with the data and populated our ontology.
-				</li>
+				For this project we developed our custom ontology, and we modeled the relations between the persons,
+				phobias, activities, remedies and symptoms.
+				<p>We have the following classes:</p>
+				<ul>
+					<li>Person</li>
+					<li>Phobia</li>
+					<li>Activity</li>
+					<li>Remedy</li>
+					<li>Symptom</li>
+				</ul>
+				<p>We have created the following DatatypeProperty:</p>
+				<ul>
+					<li>description</li>
+					<li>symptomName</li>
+					<li>appearsFor</li>
+					<li>forActivity</li>
+					<li>hasPhobia</li>
+				</ul>
+				<img src="printscreens/DatatypeProperty.png" alt="DatatypeProperty" height="110px">
+				<p>And we added the following ObjectProperty:</p>
+				<ul>
+					<li>forPhobia</li>
+				</ul>
+				<img src="printscreens/ObjectProperty.png" alt="ObjectProperty" height="90px">
+			
+				<p>We did research on various phobias and review which are the possible remedies. We made a list with the data and populated our ontology.
+				Our remedies were based on a phobia and a type of activity associated with it.
+				</p>
+				
+				<img src="printscreens/remedy.png" alt="Remedy" height="200px">
+				
+				<p>We also have a list of possible symtopms that a person can have when having a phobia</p>
+				<img src="printscreens/symptom.png" alt="Symptom" height="130px">
 			</ul>
 		</section>
 
 		<section>
 			<h3>7. Web API</h3>
-			<p>See the <a href="phos.yaml" target="_blank">yaml</a> or the <a href="phos.json" target="_blank">json</a> version of the web API</p>
+			<p>See the <a href="api/phos.yaml" target="_blank">yaml</a> or the <a href="api/phos.json" target="_blank">json</a> version of the web API</p>
 			<p>
 				On the server side we created a Symfony command which access via the EasyRdf library the SPARQL endpoint fro Dbpedia, and downloads all the phobias into our Stardog database.
 				We also created our custom ontology, which we also imported into Stardog. Then using Symfony framework and its FOSRestBundle we developed the REST API.
@@ -264,6 +224,75 @@
 			</p>
 		</section>
 
+		<section>
+			<h3>8. SparQL quries to access the RDF store</h3>
+			
+			The main query that we made was to get the pbobias information from Dbpedia.
+			<pre>
+				PREFIX dbo: <http://dbpedia.org/ontology/>
+				PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+				SELECT * WHERE  {
+					?phobia rdfs:label ?label .
+					?phobia dbo:abstract ?info .
+					?phobia foaf:isPrimaryTopicOf ?link .
+				}
+			</pre>
+			After that we inserted them in our Stardog database using this query:
+			<pre>
+				PREFIX dbo: <http://dbpedia.org/ontology/>
+				PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+				INSERT DATA	{ 
+					   <http://phobia.vrinceanu.com/remedies#' . $label) .'>
+					   rdfs:label "' . $label .'";
+					   dbo:abstract "' . $info . '";
+					   foaf:isPrimaryTopicOf "' . $link . '" .
+				   }
+			</pre>
+			
+			For our `User` and `Person` we used properties from foaf and some of our own datatypeProperties, as you can see below:
+			<pre>
+				PREFIX foaf:  <http://xmlns.com/foaf/0.1/>
+				SELECT *
+				WHERE {
+					?person foaf:mbox ?email .
+					?person foaf:name ?name .
+					?person foaf:sha1 ?password .
+					FILTER (?email = "' . $email . '")
+				}
+			</pre>
+			To update an user we had to remove all his information first and after that to add it again. That's how SparQL 1.1 works for an update.
+			<pre>
+				PREFIX remedies: <http://phobia.vrinceanu.com/remedies#>
+				DELETE WHERE {
+				   <http://phobia.vrinceanu.com/user#' . $email .'>
+				   foaf:mbox "' . $email .'";
+				   foaf:name "' . $oldUser['name'] . '" .
+				}
+							
+				DELETE WHERE {
+					 <http://phobia.vrinceanu.com/user#' . $email .'> remedies:hasPhobia "' . $phobia . '" .
+				}
+				INSERT DATA {
+					<http://phobia.vrinceanu.com/user#' . $email .'>
+				    foaf:mbox "' . $email .'";
+				    foaf:name "' . $requestData['name'] . '" .
+				}
+			</pre>
+			
+			To get the remedies for an activity we use the query bellow:
+			<pre>
+				PREFIX remedies: <http://phobia.vrinceanu.com/remedies#>
+
+				SELECT ?description WHERE {                
+					?r remedies:forPhobia <' . phobia . '> .
+					?r remedies:forActivity "' activity . '" .
+					?r remedies:description ?description .
+				}
+			</pre>
+			
+		</section>
 		<section>
 			<h3>8. Bibliography</h3>
 			<ul>
